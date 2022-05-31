@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0127.1855********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0531.1355********************//
 error_reporting(0);
 session_start();
 mysql_connect("localhost","root");
@@ -487,8 +487,12 @@ function html_start($title,$tab)
     <nav style="z-index: 2000" class="navbar navbar-default fixed-top">
     <div class="container-fluid">
         <header>
-            <a style="color: #8B008B; text-decoration: none;" href="index.php" data-toggle="tooltip" data-placement="bottom" title="Home Page">Better Than Ice Cream, Inc.</a>
-            <span id="backtotop" style="background-color: #86609d;" class="badge" data-toggle="tooltip" data-placement="bottom" title="Go back to top of page.">v14.22.0127.1855</span>
+            <a style="color: #8B008B; text-decoration: none;" href="index.php" data-toggle="tooltip" data-placement="bottom" title="Home Page">
+                Better Than Ice Cream, Inc.
+            </a>
+            <span id="backtotop" style="background-color: #86609d;" class="badge" data-toggle="tooltip" data-placement="bottom" title="Go back to top of page.">
+                v14.22.0531.1355
+            </span>
         </header>
     </div>
     <?php
@@ -543,29 +547,21 @@ function html_start($title,$tab)
                 ?>
                 </ul>
             </li>
+            <?php
+            if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_payroll')
+            {
+            ?>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <strong>REPORTS</strong>
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                <?php
-                if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_payroll')
-                {
-                ?>
                     <li><a href="reports-payroll.php">Payroll</a></li>
-                <?php
-                }
-                if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
-                {
-                ?>
-                    <!--<li><a href="reports-receivables.php">Receivables</a></li>-->
-                <?php
-                }
-                ?>
                 </ul>
             </li>
             <?php
+            }
             if($_SESSION['usertype']=='btic_admin')
             {
             ?>
@@ -583,17 +579,17 @@ function html_start($title,$tab)
             ?>
         </ul>
         <?php
-        if(strpos($_SERVER['REQUEST_URI'],'developer/btic'))
+        if($_SESSION['usertype'] == 'btic_admin')
         {
             $db_color='label-danger';
-            $db_badge='DEVELOPER MODE';
+            $db_badge='ADMIN MODE';
         }
-        else if(strpos($_SERVER['REQUEST_URI'],'payroll/btic'))
+        else if($_SESSION['usertype'] == 'btic_payroll')
         {
             $db_color='label-primary';
             $db_badge='PAYROLL MODE';
         }
-        else if(strpos($_SERVER['REQUEST_URI'],'invoice/btic'))
+        else if($_SESSION['usertype'] == 'btic_invoice')
         {
             $db_color='label-success';
             $db_badge='INVOICE MODE';
@@ -743,7 +739,7 @@ function welcome($fullname)
             <tr>
                 <th>MAINTENANCE</th>
                 <th>TRANSACTIONS</th>
-                <th>REPORTS</th>
+                <th <?php if($_SESSION['usertype']=='btic_invoice'){ echo ' style="display: none;" '; } ?>>REPORTS</th>
             </tr>
         </thead>
         <tbody>
@@ -776,13 +772,13 @@ function welcome($fullname)
                 <td></td>
                 <td><a href="transactions-collections.php" class="btn btn-link" role="button">Collections
                     <span class="badge"><?=$collections;?></span></a></td>
-                <td></td>
+                <!--<td></td>-->
             </tr>
             <tr>
                 <td></td>
                 <td><a href="transactions-returns.php" class="btn btn-link" role="button">Returns
                     <span class="badge"><?=$returns;?></span></a></td>
-                <td></td>
+                <!--<td></td>-->
             </tr>
             <?php
             }
@@ -835,7 +831,7 @@ function btn_visibility($new)
     }
     ?>
     <form method="post" role="form" action="<?php echo $_SERVER["PHP_SELF"];?>">
-    <button class="btn btn-default" type="submit" name="btnVisibility" style="position: fixed; top: 105px; left: 1135px; right: 0px; z-index: 1500; box-shadow: 5px 5px 5px grey;" data-toggle="tooltip" data-placement="bottom" title="<?=$title;?>">VISIBILITY <span class="label label-default"><?=$visibility;?></span></button>
+    <button class="btn btn-default" type="submit" name="btnVisibility" style="position: fixed; top: 105px; right: 30px; z-index: 1500; box-shadow: 5px 5px 5px grey; width: 200px;" data-toggle="tooltip" data-placement="bottom" title="<?=$title;?>">VISIBILITY <span class="label label-default"><?=$visibility;?></span></button>
     </form>
 <?php
 }

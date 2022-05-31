@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0127.1855********************// ?>
+<?php //********************BTIC Invoicing & Payroll System v14.22.0531.1355********************// ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -333,7 +333,7 @@ else if($_GET['db']=='restore')
             $filename=str_replace('| ','',strstr($_GET['filename'],'|'));
             $filename="C:/dbBackup/".$filename;
             $success='SUCCESS: Database RESTORE ['.$table.'] SUCCESSFUL!!!\n\n'.$_GET['filename'];
-            $failed='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n\nNOTICE: An error has occurred during attempt!!! Please try again...';
+            $failed='\nERROR: Database RESTORE ['.$table.'] FAILED!!!\nNOTICE: An error has occurred during attempt!!! Please try again...\n\n';
             mysql_query("TRUNCATE TABLE $table");
             $retval=mysql_query("LOAD DATA INFILE '$filename' INTO TABLE $table");
             if(!$retval)
@@ -378,7 +378,7 @@ else if($_GET['db']=='restore')
                 $file=$files[0];
                 $filename="C:/dbBackup/".$file;
                 $success='SUCCESS: Database RESTORE ['.$table.'] SUCCESSFUL!!!\n'.$_GET['filename'];
-                $failed='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n\nNOTICE: An error has occurred during attempt!!! Please try again...';
+                $failed='\nERROR: Database RESTORE ['.$table.'] FAILED!!!\nNOTICE: An error has occurred during attempt!!! Please try again...\n\n';
                 mysql_query("TRUNCATE TABLE $table");
                 $retval=mysql_query("LOAD DATA INFILE '$filename' INTO TABLE $table");
                 if(!$retval)
@@ -408,7 +408,7 @@ else if($_GET['db']=='restore')
                 $file=$files[0];
                 $filename="C:/dbBackup/".$file;
                 $success='SUCCESS: Database RESTORE ['.$table.'] SUCCESSFUL!!!\n'.$_GET['filename'];
-                $failed='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n\nNOTICE: An error has occurred during attempt!!! Please try again...';
+                $failed='\nERROR: Database RESTORE ['.$table.'] FAILED!!!\nNOTICE: An error has occurred during attempt!!! Please try again...\n\n';
                 mysql_query("TRUNCATE TABLE $table");
                 $retval=mysql_query("LOAD DATA INFILE '$filename' INTO TABLE $table");
                 if(!$retval)
@@ -436,7 +436,7 @@ else if($_GET['db']=='restore')
                 $file=$files[0];
                 $filename="C:/dbBackup/".$file;
                 $success='SUCCESS: Database RESTORE ['.$table.'] SUCCESSFUL!!!\n'.$_GET['filename'];
-                $failed='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n\nNOTICE: An error has occurred during attempt!!! Please try again...';
+                $failed='\nERROR: Database RESTORE ['.$table.'] FAILED!!!\nNOTICE: An error has occurred during attempt!!! Please try again...\n\n';
                 mysql_query("TRUNCATE TABLE $table");
                 $retval=mysql_query("LOAD DATA INFILE '$filename' INTO TABLE $table");
                 if(!$retval)
@@ -466,7 +466,7 @@ else if($_GET['db']=='restore')
                 $file=$files[0];
                 $filename="C:/dbBackup/".$file;
                 $success='SUCCESS: Database RESTORE ['.$table.'] SUCCESSFUL!!!\n'.$_GET['filename'];
-                $failed='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n\nNOTICE: An error has occurred during attempt!!! Please try again...';
+                $failed='\nERROR: Database RESTORE ['.$table.'] FAILED!!!\nNOTICE: An error has occurred during attempt!!! Please try again...\n\n';
                 mysql_query("TRUNCATE TABLE $table");
                 $retval=mysql_query("LOAD DATA INFILE '$filename' INTO TABLE $table");
                 if(!$retval)
@@ -494,7 +494,7 @@ else if($_GET['db']=='restore')
                 $file=$files[0];
                 $filename="C:/dbBackup/".$file;
                 $success='SUCCESS: Database RESTORE ['.$table.'] SUCCESSFUL!!!\n'.$_GET['filename'];
-                $failed='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n\nNOTICE: An error has occurred during attempt!!! Please try again...';
+                $failed='\nERROR: Database RESTORE ['.$table.'] FAILED!!!\nNOTICE: An error has occurred during attempt!!! Please try again...\n\n';
                 mysql_query("TRUNCATE TABLE $table");
                 $retval=mysql_query("LOAD DATA INFILE '$filename' INTO TABLE $table");
                 if(!$retval)
@@ -523,7 +523,7 @@ else if($_GET['db']=='restore')
                 $file=$files[0];
                 $filename="C:/dbBackup/".$file;
                 $success='SUCCESS: Database RESTORE ['.$table.'] SUCCESSFUL!!!\n'.$_GET['filename'];
-                $failed='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n\nNOTICE: An error has occurred during attempt!!! Please try again...';
+                $failed='\nERROR: Database RESTORE ['.$table.'] FAILED!!!\nNOTICE: An error has occurred during attempt!!! Please try again...\n\n';
                 mysql_query("TRUNCATE TABLE $table");
                 $retval=mysql_query("LOAD DATA INFILE '$filename' INTO TABLE $table");
                 if(!$retval)
@@ -551,7 +551,7 @@ else if($_GET['db']=='restore')
                 $file=$files[0];
                 $filename="C:/dbBackup/".$file;
                 $success='SUCCESS: Database RESTORE ['.$table.'] SUCCESSFUL!!!\n'.$_GET['filename'];
-                $failed='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n\nNOTICE: An error has occurred during attempt!!! Please try again...';
+                $failed='\nERROR: Database RESTORE ['.$table.'] FAILED!!!\nNOTICE: An error has occurred during attempt!!! Please try again...\n\n';
                 mysql_query("TRUNCATE TABLE $table");
                 $retval=mysql_query("LOAD DATA INFILE '$filename' INTO TABLE $table");
                 if(!$retval)

@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0127.1855********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0531.1355********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
@@ -33,7 +33,7 @@ if($_SESSION['updateall']==NULL)
 {
 ?>
     <form method="post" role="form" action="<?php echo $_SERVER["PHP_SELF"];?>">
-        <button class="btn btn-primary" type="submit" name="btnUpdateAll" style="position: fixed; top: 105px; left: 145px; right: 0px; z-index: 1000; box-shadow: 5px 5px 5px grey;">UPDATE ALL</button>
+        <button class="btn btn-primary" type="submit" name="btnUpdateAll" style="position: fixed; top: 105px; left: 145px; right: 0px; z-index: 1000; box-shadow: 5px 5px 5px grey; width: 150px;">UPDATE ALL</button>
     </form>
     <?php
     $form='Employee Account Details Form';
@@ -234,7 +234,7 @@ else
     { $where=" WHERE NOT status='hidden' "; }
     ?>
     <form method="post" role="form" action="<?php echo $_SERVER["PHP_SELF"];?>">
-        <button class="btn btn-primary" type="submit" name="btnBack" style="position: fixed; top: 105px; left: 145px; right: 0px; z-index: 1200; box-shadow: 5px 5px 5px grey;">BACK</button>
+        <button class="btn btn-primary" type="submit" name="btnBack" style="position: fixed; top: 105px; left: 145px; right: 0px; z-index: 1200; box-shadow: 5px 5px 5px grey; width: 150px;">BACK</button>
     </form>
     <a href="maintenance-employees.php">
         <button id="new" type="button" data-toggle="tooltip" data-placement="right" title="Create new record.">+</button>
@@ -320,7 +320,7 @@ else
     </tbody>
     </table>        
     <br />
-    <input class="form-control btn btn-success" id="btnUpdate2" name="btnUpdate2" type="submit" value="UPDATE RECORD" onclick="return confirm('UPDATE: Do you really want to UPDATE this record?');" style="position: fixed; top: 105px; left: 980px; right: 0px; z-index: 1000; box-shadow: 5px 5px 5px grey;"/>
+    <input class="form-control btn btn-success" id="btnUpdate2" name="btnUpdate2" type="submit" value="UPDATE RECORD" onclick="return confirm('UPDATE: Do you really want to UPDATE this record?');" style="position: fixed; top: 105px; right: 240px; z-index: 1000; box-shadow: 5px 5px 5px grey; width: 150px;"/>
     </form>
     </div>
     <?php

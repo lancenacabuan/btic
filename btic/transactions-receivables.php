@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0127.1855********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0531.1355********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_invoice')
@@ -215,6 +215,8 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
     <label style="margin-left: 20px;">Check #</label>
     <input class="form-control" type="text" name="checknum" value="<?=$_POST['checknum'];?>" placeholder="[Search Check Number...]">
     <span style="margin-left: 20px;"></span>
+    <label style="margin-left: 20px;">Delivery Date</label>
+    <input class="form-control" type="date" name="datefilter" value="<?=$_POST['datefilter'];?>"><br />
     <input class="form-control btn btn-primary" name="btnSelect" type="submit" value="SELECT">
     <input class="form-control btn btn-success" name="btnShowAll" type="submit" value="SHOW ALL RECORDS">
     <a style="width: 100px;" class="form-control btn btn-warning" href="transactions-receivables.php">RESET</a>
@@ -232,6 +234,7 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         { $date=NULL; }
         $invoice=$_POST['invoice'];
         $checknum=$_POST['checknum'];
+        $datefilter=$_POST['datefilter'];
     }
     else if(isset($_POST['btnShowAll']))
     {
@@ -241,9 +244,10 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         $date=NULL;
         $invoice=NULL;
         $checknum=NULL;
+        $datefilter=NULL;
     }
     
-    if($invoice!=NULL && $checknum!=NULL)
+    if(($invoice && $checknum) || ($checknum && $datefilter) || ($invoice && $datefilter))
     { alert('ERROR: Invalid form input!!! Please try again.....'); }
     else if($invoice!=NULL)
     {
@@ -256,6 +260,12 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         $content=mysql_query("SELECT * FROM ".$table." WHERE checknum LIKE '%".$checknum."%' ORDER BY sinum");
         $total=mysql_affected_rows();
         alert('SUCCESS: '.$total.' matching record/s found.\nShowing Check #'.$checknum.' record/s in RECEIVABLES.');
+    }
+    else if($datefilter!=NULL)
+    {
+        $content=mysql_query("SELECT * FROM ".$table." WHERE date1 LIKE '%".$datefilter."%' ORDER BY sinum");
+        $total=mysql_affected_rows();
+        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Delivery Date '.$datefilter.' record/s in RECEIVABLES.');
     }
     else
     {

@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0127.1855********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0531.1355********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
@@ -1296,20 +1296,25 @@ if(!isset($_POST['btnSelect1']))
                         $phic1='150.00';
                         $phic2='0.03';
                     }
-                    else if($payyear==2022)
+                    else if($paymonth=='MAY' && $payyear==2022)
                     {
                         $phic1='150.00';
                         $phic2='0.03';
+                    }
+                    else if($paymonth!='MAY' && $payyear==2022)
+                    {
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear==2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear>2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }

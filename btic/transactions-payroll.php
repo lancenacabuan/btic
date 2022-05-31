@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0127.1855********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0531.1355********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
@@ -392,9 +392,9 @@ for($x=0; $x<=$total-1; $x++)
 </table>
 </div>
 <br />
-<input class="form-control btn btn-primary" id="btnSave" name="btnSave" type="submit" value="SAVE RECORD" onclick="return confirm('SAVE: Do you really want to SAVE this record?');" style="position: fixed; top: 105px; left: 1000px; right: 0px; z-index: 1000; box-shadow: 5px 5px 5px grey;"/>
+<input class="form-control btn btn-primary" id="btnSave" name="btnSave" type="submit" value="SAVE RECORD" onclick="return confirm('SAVE: Do you really want to SAVE this record?');" style="position: fixed; top: 105px; right: 240px; z-index: 1000; box-shadow: 5px 5px 5px grey; width: 150px;"/>
 </form>
-<button id="btnConfirm" class="btn btn-basic" style="position: fixed; top: 105px; left: 970px; right: 0px; z-index: 1000; box-shadow: 5px 5px 5px grey; display: none;">CONFIRM RECORD</button>
+<button id="btnConfirm" class="btn btn-basic" style="position: fixed; top: 105px; right: 240px; z-index: 1000; box-shadow: 5px 5px 5px grey; width: 150px; display: none;">CONFIRM RECORD</button>
 <?php
 }
 ?>
@@ -949,20 +949,25 @@ if(isset($_POST['btnSave']))
                     $phic1='150.00';
                     $phic2='0.03';
                 }
-                else if($payyear==2022)
+                else if($paymonth=='MAY' && $payyear==2022)
                 {
                     $phic1='150.00';
                     $phic2='0.03';
+                }
+                else if($paymonth!='MAY' && $payyear==2022)
+                {
+                    $phic1='200.00';
+                    $phic2='0.04';
                 }
                 else if($payyear==2023)
                 {
-                    $phic1='150.00';
-                    $phic2='0.03';
+                    $phic1='200.00';
+                    $phic2='0.04';
                 }
                 else if($payyear>2023)
                 {
-                    $phic1='150.00';
-                    $phic2='0.03';
+                    $phic1='200.00';
+                    $phic2='0.04';
                 }
                 if($tb<=10000)
                 { $phic=number_format(($phic1),2); }
@@ -1074,20 +1079,25 @@ if(isset($_POST['btnSave']))
                         $phic1='150.00';
                         $phic2='0.03';
                     }
-                    else if($payyear==2022)
+                    else if($paymonth=='MAY' && $payyear==2022)
                     {
                         $phic1='150.00';
                         $phic2='0.03';
+                    }
+                    else if($paymonth!='MAY' && $payyear==2022)
+                    {
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear==2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear>2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }
@@ -1185,20 +1195,25 @@ if(isset($_POST['btnSave']))
                         $phic1='150.00';
                         $phic2='0.03';
                     }
-                    else if($payyear==2022)
+                    else if($paymonth=='MAY' && $payyear==2022)
                     {
                         $phic1='150.00';
                         $phic2='0.03';
+                    }
+                    else if($paymonth!='MAY' && $payyear==2022)
+                    {
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear==2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear>2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }
@@ -1338,20 +1353,25 @@ if(isset($_POST['btnSave']))
                             $phic1='150.00';
                             $phic2='0.03';
                         }
-                        else if($payyear==2022)
+                        else if($paymonth=='MAY' && $payyear==2022)
                         {
                             $phic1='150.00';
                             $phic2='0.03';
+                        }
+                        else if($paymonth!='MAY' && $payyear==2022)
+                        {
+                            $phic1='200.00';
+                            $phic2='0.04';
                         }
                         else if($payyear==2023)
                         {
-                            $phic1='150.00';
-                            $phic2='0.03';
+                            $phic1='200.00';
+                            $phic2='0.04';
                         }
                         else if($payyear>2023)
                         {
-                            $phic1='150.00';
-                            $phic2='0.03';
+                            $phic1='200.00';
+                            $phic2='0.04';
                         }
                         if($tb<=10000)
                         { $phic=number_format(($phic1),2); }
@@ -2228,20 +2248,25 @@ if(isset($_POST['btnUpdate']))
                     $phic1='150.00';
                     $phic2='0.03';
                 }
-                else if($payyear==2022)
+                else if($paymonth=='MAY' && $payyear==2022)
                 {
                     $phic1='150.00';
                     $phic2='0.03';
+                }
+                else if($paymonth!='MAY' && $payyear==2022)
+                {
+                    $phic1='200.00';
+                    $phic2='0.04';
                 }
                 else if($payyear==2023)
                 {
-                    $phic1='150.00';
-                    $phic2='0.03';
+                    $phic1='200.00';
+                    $phic2='0.04';
                 }
                 else if($payyear>2023)
                 {
-                    $phic1='150.00';
-                    $phic2='0.03';
+                    $phic1='200.00';
+                    $phic2='0.04';
                 }
                 if($tb<=10000)
                 { $phic=number_format(($phic1),2); }
@@ -2353,20 +2378,25 @@ if(isset($_POST['btnUpdate']))
                         $phic1='150.00';
                         $phic2='0.03';
                     }
-                    else if($payyear==2022)
+                    else if($paymonth=='MAY' && $payyear==2022)
                     {
                         $phic1='150.00';
                         $phic2='0.03';
+                    }
+                    else if($paymonth!='MAY' && $payyear==2022)
+                    {
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear==2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear>2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }
@@ -2464,20 +2494,25 @@ if(isset($_POST['btnUpdate']))
                         $phic1='150.00';
                         $phic2='0.03';
                     }
-                    else if($payyear==2022)
+                    else if($paymonth=='MAY' && $payyear==2022)
                     {
                         $phic1='150.00';
                         $phic2='0.03';
+                    }
+                    else if($paymonth!='MAY' && $payyear==2022)
+                    {
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear==2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     else if($payyear>2023)
                     {
-                        $phic1='150.00';
-                        $phic2='0.03';
+                        $phic1='200.00';
+                        $phic2='0.04';
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }

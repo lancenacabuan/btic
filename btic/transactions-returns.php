@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0127.1855********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0531.1355********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_invoice')
@@ -70,7 +70,7 @@ $sales=number_format(($x1/1.12),2);
 $x2=str_replace(',','',$sales);
 $outputvat=number_format(($x1-$x2),2);
 
-$select="SELECT * FROM ".$table." ORDER BY date";
+$select="SELECT * FROM ".$table." ORDER BY date ASC, customer ASC";
 $insert="INSERT INTO ".$table." VALUES (DEFAULT,'".$date."','".$customer."','".$rtvnum."','".$accrec."','".$outputvat."','".$sales."')";
 $update="UPDATE ".$table." SET date='".$date."',customer='".$customer."',rtvnum='".$rtvnum."',accrec='".$accrec."',outputvat='".$outputvat."',sales='".$sales."' WHERE id='".$id."'";
 $delete="DELETE FROM ".$table." WHERE id='$id'";
@@ -121,6 +121,8 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
     <br /><label style="margin-left: 20px;">R.T.V. #</label>
     <input class="form-control" type="text" name="rtv" value="<?=$_POST['rtv'];?>" placeholder="[Search R.T.V. Number...]">
     <span style="margin-left: 20px;"></span>
+    <label style="margin-left: 20px;">Date</label>
+    <input class="form-control" type="date" name="datefilter" value="<?=$_POST['datefilter'];?>"><br />
     <input class="form-control btn btn-primary" name="btnSelect" type="submit" value="SELECT">
     <input class="form-control btn btn-success" name="btnShowAll" type="submit" value="SHOW ALL RECORDS">
     <a style="width: 100px;" class="form-control btn btn-warning" href="transactions-returns.php">RESET</a>
@@ -136,6 +138,7 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         else
         { $date=NULL; }
         $rtvnum=$_POST['rtv'];
+        $datefilter=$_POST['datefilter'];
     }
     else if(isset($_POST['btnShowAll']))
     {
@@ -144,13 +147,22 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         $year=NULL;
         $date=NULL;
         $rtvnum=NULL;
+        $datefilter=NULL;
     }
     
-    if($rtvnum!=NULL)
+    if($rtvnum && $datefilter)
+    { alert('ERROR: Invalid form input!!! Please try again.....'); }
+    else if($rtvnum!=NULL)
     {
-        $content=mysql_query("SELECT * FROM ".$table." WHERE rtvnum LIKE '%".$rtvnum."%' ORDER BY date");
+        $content=mysql_query("SELECT * FROM ".$table." WHERE rtvnum LIKE '%".$rtvnum."%' ORDER BY date ASC, customer ASC");
         $total=mysql_affected_rows();
         alert('SUCCESS: '.$total.' matching record/s found.\nShowing R.T.V. #'.$rtvnum.' record/s in RETURNS.');
+    }
+    else if($datefilter!=NULL)
+    {
+        $content=mysql_query("SELECT * FROM ".$table." WHERE date LIKE '%".$datefilter."%' ORDER BY customer ASC");
+        $total=mysql_affected_rows();
+        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Date '.$datefilter.' record/s in RETURNS.');
     }
     else
     {
@@ -163,7 +175,7 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         }
         if($date==NULL && isset($_POST['btnShowAll']))
         {
-            $content=mysql_query("SELECT * FROM ".$table." ORDER BY date");
+            $content=mysql_query("SELECT * FROM ".$table." ORDER BY date ASC, customer ASC");
             $total=mysql_affected_rows();
             alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s in RETURNS.');
         }
@@ -171,21 +183,21 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         {
             if($sqlstring!=NULL)
             { $addstring='WHERE'; }
-            $query=("SELECT * FROM ".$table." $addstring $sqlstring ORDER BY date");
+            $query=("SELECT * FROM ".$table." $addstring $sqlstring ORDER BY date ASC, customer ASC");
             $content=mysql_query($query);
             $total=mysql_affected_rows();
             alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'in RETURNS.');
         }
         else if($month==NULL && $year!=NULL && isset($_POST['btnSelect']))
         {
-            $query=("SELECT * FROM ".$table." WHERE $sqlstring date LIKE '".$year."-%' ORDER BY date");
+            $query=("SELECT * FROM ".$table." WHERE $sqlstring date LIKE '".$year."-%' ORDER BY date ASC, customer ASC");
             $content=mysql_query($query);
             $total=mysql_affected_rows();
             alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'from YEAR '.$year.' in RETURNS.');
         }
         else if($month!=NULL && $year!=NULL && isset($_POST['btnSelect']))
         {
-            $query=("SELECT * FROM ".$table." WHERE $sqlstring date LIKE '%".$date."%' ORDER BY date");
+            $query=("SELECT * FROM ".$table." WHERE $sqlstring date LIKE '%".$date."%' ORDER BY date ASC, customer ASC");
             $content=mysql_query($query);
             $total=mysql_affected_rows();
             alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'from '.strtoupper(date('F',mktime(0,0,0,$month,10))).' '.$year.' in RETURNS.');
