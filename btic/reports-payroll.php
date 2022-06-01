@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0531.1355********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0601.1625********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
@@ -214,7 +214,7 @@ if($_SESSION['printslip']!='thirteenthmonth' && $_SESSION['printslip']=='payslip
         <input name="netpay" type="hidden" value="<?=$netpay;?>"/>
         <input name="category" type="hidden" value="<?=$category;?>"/>
         <input name="sssbracket" type="hidden" value="<?=$sssbracket;?>"/>
-        <input style="height: 50px; width: 655px;" class="form-control btn btn-lg btn-info" type="button" onclick="printDiv2('printReceipt2')" value="PRINT RECEIPT"/>
+        <input style="height: 50px; width: 655px;" class="form-control btn btn-lg btn-info" type="button" onclick="printDiv2('printReceipt2')" value="PRINT RECEIPT"/><br />
         <input style="height: 50px; width: 655px;" class="form-control btn btn-lg btn-success" type="submit" name="btnUpdate2" value="UPDATE RECORD"/>
         </form>
         <script>
@@ -357,7 +357,7 @@ if($_SESSION['printslip']!='thirteenthmonth' && $_SESSION['printslip']=='payslip
             <input name="netpay" type="hidden" value="<?=$netpay;?>"/>
             <input name="category" type="hidden" value="<?=$category;?>"/>
             <input name="sssbracket" type="hidden" value="<?=$sssbracket;?>"/>
-            <input style="height: 50px; width: 655px;" class="form-control btn btn-lg btn-info" type="button" onclick="printDiv2('printReceipt2')" value="PRINT RECEIPT"/>
+            <input style="height: 50px; width: 655px;" class="form-control btn btn-lg btn-info" type="button" onclick="printDiv2('printReceipt2')" value="PRINT RECEIPT"/><br />
             <input style="height: 50px; width: 655px;" class="form-control btn btn-lg btn-success" type="submit" name="btnUpdate2" value="UPDATE RECORD"/>
             </form>
             <script>
