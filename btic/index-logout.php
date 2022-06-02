@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0601.1625********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0602.1715********************//
 include('functions.php');
 session_unset();
 session_destroy();

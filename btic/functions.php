@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0601.1625********************//
+<?php //********************BTIC Invoicing & Payroll System v14.22.0602.1715********************//
 error_reporting(0);
 session_start();
 mysql_connect("localhost","root");
@@ -491,7 +491,7 @@ function html_start($title,$tab)
                 Better Than Ice Cream, Inc.
             </a>
             <span id="backtotop" style="background-color: #86609d;" class="badge" data-toggle="tooltip" data-placement="bottom" title="Go back to top of page.">
-                v14.22.0601.1625
+                v14.22.0602.1715
             </span>
         </header>
     </div>
@@ -582,17 +582,17 @@ function html_start($title,$tab)
         if($_SESSION['usertype'] == 'btic_admin')
         {
             $db_color='label-danger';
-            $db_badge='ADMIN MODE';
+            $db_badge='ADMIN';
         }
         else if($_SESSION['usertype'] == 'btic_payroll')
         {
             $db_color='label-primary';
-            $db_badge='PAYROLL MODE';
+            $db_badge='PAYROLL';
         }
         else if($_SESSION['usertype'] == 'btic_invoice')
         {
             $db_color='label-success';
-            $db_badge='INVOICE MODE';
+            $db_badge='INVOICE';
         }
         else
         {
@@ -765,20 +765,40 @@ function welcome($fullname)
                     <span class="badge"><?=$accounts;?></span></a></td>
                 <td><a href="transactions-receivables.php" class="btn btn-link" role="button">Receivables
                     <span class="badge"><?=$receivables;?></span></a></td>
-                <!--<td><a href="reports-receivables.php" class="btn btn-link" role="button">Receivables
-                    <span class="badge"></span></a></td>-->
+                <?php
+                if($_SESSION['usertype']=='btic_admin')
+                {
+                ?>
+                <td>&nbsp;</td>
+                <?php
+                }
+                ?>
             </tr>
             <tr>
                 <td></td>
                 <td><a href="transactions-collections.php" class="btn btn-link" role="button">Collections
                     <span class="badge"><?=$collections;?></span></a></td>
-                <!--<td></td>-->
+                    <?php
+                if($_SESSION['usertype']=='btic_admin')
+                {
+                ?>
+                <td>&nbsp;</td>
+                <?php
+                }
+                ?>
             </tr>
             <tr>
                 <td></td>
                 <td><a href="transactions-returns.php" class="btn btn-link" role="button">Returns
                     <span class="badge"><?=$returns;?></span></a></td>
-                <!--<td></td>-->
+                    <?php
+                if($_SESSION['usertype']=='btic_admin')
+                {
+                ?>
+                <td>&nbsp;</td>
+                <?php
+                }
+                ?>
             </tr>
             <?php
             }
