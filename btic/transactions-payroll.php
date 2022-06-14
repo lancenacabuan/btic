@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v15.22.0613.2008********************//
+<?php //********************BTIC Invoicing & Payroll System v15.22.0614.0852********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
@@ -1830,9 +1830,9 @@ if(isset($_POST['btnUpdate']))
         $specialotpay=number_format((($totalspecialot*str_replace(',','',$rateperhour))*1.3),2);
         
         $oldND1=validate($_POST['oldND1'][$x]);
-        $nightdifferential1=validate($_POST['nightdifferential1'][$x]);
-        $nightdifferential2=validate($_POST['nightdifferential2'][$x]);
-        $nightdifferential3=validate($_POST['nightdifferential3'][$x]);
+        $nightdifferential1=validate($_POST['nightdifferential1']);
+        $nightdifferential2=validate($_POST['nightdifferential2']);
+        $nightdifferential3=validate($_POST['nightdifferential3']);
         $totalnightdiff=$nightdifferential1+$nightdifferential2+$nightdifferential3;
         $totalnightdiff1=$nightdifferential1+$nightdifferential2+$nightdifferential3+$oldND1;
         $nighttimepay=number_format((($totalnightdiff*str_replace(',','',$rateperhour))*1.1) + (($oldND1*str_replace(',','',$oldrateperhour))*1.1),2);
