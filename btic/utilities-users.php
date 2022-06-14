@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0602.1725********************//
+<?php //********************BTIC Invoicing & Payroll System v15.22.0613.2008********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin')

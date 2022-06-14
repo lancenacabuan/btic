@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0602.1725********************//
+<?php //********************BTIC Invoicing & Payroll System v15.22.0613.2008********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
@@ -170,25 +170,25 @@ if(strpos($_POST['sssbracket'],'no')!==false)
     <td><label>Rate</label></td>
     <td>&nbsp;<input style="width: 150px;" class="form-control" name="rate" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['rate']);?>">&nbsp;</td>
     <td><label>Week 1</label></td>
-    <td>&nbsp;<input style="width: 100px;" class="form-control" name="week1" type="number" min="0" step="0.01" value="<?=str_replace(',','',number_format((str_replace(',','',$_POST['regular1'])-str_replace(',','',$_POST['paid'])),2));?>">&nbsp;</td>
+    <td>&nbsp;<input style="width: 100px;" class="form-control" name="week1" type="number" min="0" step="0.01" value="<?=str_replace(',','',number_format((str_replace(',','',$_POST['regular1'])-str_replace(',','',$_POST['paid'])-str_replace(',','',$_POST['oldhrs'])),2));?>">&nbsp;</td>
     <td><label>Week 2</label></td>
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="week2" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['regular2']);?>">&nbsp;</td>
     <td><label>Week 3</label></td>
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="week3" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['regular3']);?>">&nbsp;</td>
 </tr>
 <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><label>Old Rate</label></td>
+    <td>&nbsp;<input style="width: 150px;" class="form-control" name="oldrate" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['oldrate']);?>">&nbsp;</td>
     <td><label>(0.25) 1</label></td>
-    <td>&nbsp;<input style="width: 100px;" class="form-control" name="overtime1" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['overtime1']);?>">&nbsp;</td>
+    <td>&nbsp;<input style="width: 100px;" class="form-control" name="overtime1" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['overtime1'])-str_replace(',','',$_POST['oldOT1']);?>">&nbsp;</td>
     <td><label>(0.25) 2</label></td>
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="overtime2" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['overtime2']);?>">&nbsp;</td>
     <td><label>(0.25) 3</label></td>
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="overtime3" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['overtime3']);?>">&nbsp;</td>
 </tr>
 <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><label>Reg. Hrs. (Old Rate)</label></td>
+    <td>&nbsp;<input style="width: 150px;" class="form-control" name="oldhrs" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['oldhrs']);?>">&nbsp;</td>
     <td><label>(0.30) 1</label></td>
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="specialovertime1" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['specialovertime1']);?>">&nbsp;</td>
     <td><label>(0.30) 2</label></td>
@@ -197,18 +197,18 @@ if(strpos($_POST['sssbracket'],'no')!==false)
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="specialovertime3" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['specialovertime3']);?>">&nbsp;</td>
 </tr>
 <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><label>OT Hrs. 0.25 (Old Rate)</label></td>
+    <td>&nbsp;<input style="width: 150px;" class="form-control" name="oldOT1" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['oldOT1']);?>">&nbsp;</td>
     <td><label>Night Diff. 1</label></td>
-    <td>&nbsp;<input style="width: 100px;" class="form-control" name="nightdifferential1" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['nightdifferential1']);?>">&nbsp;</td>
+    <td>&nbsp;<input style="width: 100px;" class="form-control" name="nightdifferential1" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['nightdifferential1'])-str_replace(',','',$_POST['oldND1']);?>">&nbsp;</td>
     <td><label>Night Diff. 2</label></td>
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="nightdifferential2" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['nightdifferential2']);?>">&nbsp;</td>
     <td><label>Night Diff. 3</label></td>
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="nightdifferential3" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['nightdifferential3']);?>">&nbsp;</td>
 </tr>
 <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><label>Night Diff. Hrs. (Old Rate)</label></td>
+    <td>&nbsp;<input style="width: 150px;" class="form-control" name="oldND1" type="number" min="0" step="0.01" value="<?=str_replace(',','',$_POST['oldND1']);?>">&nbsp;</td>
     <td><label>Holiday</label></td>
     <td>&nbsp;<input style="width: 100px;" class="form-control" name="holiday" type="number" min="0" step="1" value="<?=str_replace(',','',$_POST['holiday']);?>">&nbsp;</td>
     <td><label>Vacation</label></td>
@@ -324,15 +324,19 @@ else
     <th>Employee Type</th>
     <th>Employee Name</th>
     <th>Rate</th>
+    <th>Old Rate</th>
+    <th>Reg. Hrs. (Old Rate)</th>
     <th>Week 1</th>
     <th>Week 2</th>
     <th>Week 3</th>
+    <th>OT Hrs. 0.25 (Old Rate)</th>
     <th>(0.25) 1</th>
     <th>(0.25) 2</th>
     <th>(0.25) 3</th>
     <th>(0.30) 1</th>
     <th>(0.30) 2</th>
     <th>(0.30) 3</th>
+    <th>Night Diff. Hrs. (Old Rate)</th>
     <th>Night Diff. 1</th>
     <th>Night Diff. 2</th>
     <th>Night Diff. 3</th>
@@ -365,15 +369,19 @@ for($x=0; $x<=$total-1; $x++)
         <input name="totalvacation[]" type="hidden" value="<?=$totalvacation;?>">
         <td style="text-align: left;"><?=$fullname;?></td>
         <td><input style="width: 120px;" class="form-control" name="rate[]" type="number" min="0" step="0.01" value="<?=str_replace(',','',$rows['rate']);?>"></td>
+        <td><input style="width: 120px; background-color: gray; color: white; cursor: pointer;" class="form-control" name="oldrate[]" type="number" min="0" step="0.01"></td>
+        <td><input style="width: 100px; background-color: gray; color: white; cursor: pointer;" class="form-control" name="oldhrs[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="week1[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="week2[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="week3[]" type="number" min="0" step="0.01"></td>
+        <td><input style="width: 100px; background-color: gray; color: white; cursor: pointer;" class="form-control" name="oldOT1[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="overtime1[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="overtime2[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="overtime3[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="specialovertime1[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="specialovertime2[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="specialovertime3[]" type="number" min="0" step="0.01"></td>
+        <td><input style="width: 100px; background-color: gray; color: white; cursor: pointer;" class="form-control" name="oldND1[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="nightdifferential1[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="nightdifferential2[]" type="number" min="0" step="0.01"></td>
         <td><input style="width: 100px;" class="form-control" name="nightdifferential3[]" type="number" min="0" step="0.01"></td>
@@ -429,6 +437,8 @@ if(isset($_POST['btnSave']))
         $fullname=$_POST['fullname'][$x];
         $rate=number_format(validate($_POST['rate'][$x]),2);
         $rateperhour=number_format((str_replace(',','',$rate)/8),6);
+        $oldrate=number_format(validate($_POST['oldrate'][$x]),2);
+        $oldrateperhour=number_format((str_replace(',','',$oldrate)/8),6);
         
         if($cutoff=='1st' && $creditlast=='yes')
         {
@@ -491,9 +501,11 @@ if(isset($_POST['btnSave']))
             }
         }
         
+        $oldhrs=str_replace(',','',validate($_POST['oldhrs'][$x]));
         $week1=$paid+str_replace(',','',validate($_POST['week1'][$x]));
         $regular1=$week1-$paid;
         $overtime1=str_replace(',','',validate($_POST['overtime1'][$x]));
+        $oldOT1=str_replace(',','',validate($_POST['oldOT1'][$x]));
         
         $week2=str_replace(',','',validate($_POST['week2'][$x]));
         $regular2=$week2;
@@ -504,10 +516,14 @@ if(isset($_POST['btnSave']))
         $overtime3=str_replace(',','',validate($_POST['overtime3'][$x]));
         
         $totalregular=number_format(($regular1+$regular2+$regular3),2);
-        $basicpay1=number_format((str_replace(',','',$totalregular)*str_replace(',','',$rateperhour)),2);
+        $totalregular1=number_format(($regular1+$regular2+$regular3+$oldhrs),2);
+        $basicpay1=number_format((str_replace(',','',$totalregular)*str_replace(',','',$rateperhour)) + (str_replace(',','',$oldhrs)*str_replace(',','',$oldrateperhour)) ,2);
+        $totalregular=$totalregular1;
         
         $regularovertime=number_format(($overtime1+$overtime2+$overtime3),2);
-        $regularotpay=number_format(((str_replace(',','',$regularovertime)*str_replace(',','',$rateperhour))*1.25),2);
+        $regularovertime1=number_format(($overtime1+$overtime2+$overtime3+$oldOT1),2);
+        $regularotpay=number_format(((str_replace(',','',$regularovertime)*str_replace(',','',$rateperhour))*1.25) + ((str_replace(',','',$oldOT1)*str_replace(',','',$oldrateperhour))*1.25),2);
+        $regularovertime=$regularovertime1;
         
         $specialovertime1=validate($_POST['specialovertime1'][$x]);
         $specialovertime2=validate($_POST['specialovertime2'][$x]);
@@ -515,33 +531,39 @@ if(isset($_POST['btnSave']))
         $totalspecialot=$specialovertime1+$specialovertime2+$specialovertime3;
         $specialotpay=number_format((($totalspecialot*str_replace(',','',$rateperhour))*1.3),2);
         
+        $oldND1=validate($_POST['oldND1'][$x]);
         $nightdifferential1=validate($_POST['nightdifferential1'][$x]);
         $nightdifferential2=validate($_POST['nightdifferential2'][$x]);
         $nightdifferential3=validate($_POST['nightdifferential3'][$x]);
         $totalnightdiff=$nightdifferential1+$nightdifferential2+$nightdifferential3;
-        $nighttimepay=number_format((($totalnightdiff*str_replace(',','',$rateperhour))*1.1),2);
+        $totalnightdiff1=$nightdifferential1+$nightdifferential2+$nightdifferential3+$oldND1;
+        $nighttimepay=number_format((($totalnightdiff*str_replace(',','',$rateperhour))*1.1) + (($oldND1*str_replace(',','',$oldrateperhour))*1.1),2);
+        $totalnightdiff=$totalnightdiff1;
         
-        $week1=$regular1+$overtime1+$nightdifferential1;
+        $week1=$regular1+$overtime1+$nightdifferential1+$oldhrs+$oldOT1+$oldND1;
         $week2=$regular2+$overtime2+$nightdifferential2;
         $week3=$regular3+$overtime3+$nightdifferential3;
         $overalltotal=$week1+$week2+$week3;
         
         $paid=number_format($paid,2);
+        $oldhrs=number_format($oldhrs,2);
         $week1=number_format($week1,2);
         $week2=number_format($week2,2);
         $week3=number_format($week3,2);
         $overalltotal=number_format($overalltotal,2);
-        $regular1=number_format($regular1,2);
+        $regular1=number_format($regular1+$oldhrs,2);
         $regular2=number_format($regular2,2);
         $regular3=number_format($regular3,2);
-        $overtime1=number_format($overtime1,2);
+        $oldOT1=number_format($oldOT1,2);
+        $overtime1=number_format($overtime1+$oldOT1,2);
         $overtime2=number_format($overtime2,2);
         $overtime3=number_format($overtime3,2);
         $specialovertime1=number_format($specialovertime1,2);
         $specialovertime2=number_format($specialovertime2,2);
         $specialovertime3=number_format($specialovertime3,2);
         $totalspecialot=number_format($totalspecialot,2);
-        $nightdifferential1=number_format($nightdifferential1,2);
+        $oldND1=number_format($oldND1,2);
+        $nightdifferential1=number_format($nightdifferential1+$oldND1,2);
         $nightdifferential2=number_format($nightdifferential2,2);
         $nightdifferential3=number_format($nightdifferential3,2);
         $totalnightdiff=number_format($totalnightdiff,2);
@@ -1277,7 +1299,7 @@ if(isset($_POST['btnSave']))
             {
                 do
                 {
-                    mysql_query("INSERT INTO ".$table." VALUES (DEFAULT,'".$payyear."','".$paymonth."','".$startdate."','".$enddate."','".$cutoff."','".$employeetype."','".$employeenumber."','".$fullname."','".$rate."','".$rateperhour."','".$overalltotal."','".$week1."','".$paid."','".$regular1."','".$overtime1."','".$week2."','".$regular2."','".$overtime2."','".$week3."','".$regular3."','".$overtime3."','".$totalregular."','".$basicpay1."','".$basicpay2."','".$totalbasicpay."','".$regularovertime."','".$regularotpay."','".$specialovertime1."','".$specialovertime2."','".$specialovertime3."','".$totalspecialot."','".$specialotpay."','".$nightdifferential1."','".$nightdifferential2."','".$nightdifferential3."','".$totalnightdiff."','".$nighttimepay."','".$holiday."','".$holidaypay."','".$vacation."','".$vacationpay."','".$totalvacation."','".$grosspay1."','".$grosspay2."','".$totalgrosspay."','".$adjustment."','".$comment."','".$sssloan."','".$sssloan2."','".$hdmfloan."','".$hdmfloan2."','".$sss."','".$phic."','".$hdmf."','".$totaldeduction."','".$netpay."','".$category."','".$sssbracket."')");
+                    mysql_query("INSERT INTO ".$table." VALUES (DEFAULT,'".$payyear."','".$paymonth."','".$startdate."','".$enddate."','".$cutoff."','".$employeetype."','".$employeenumber."','".$fullname."','".$oldrate."','".$oldrateperhour."','".$oldhrs."','".$oldOT1."','".$oldND1."','".$rate."','".$rateperhour."','".$overalltotal."','".$week1."','".$paid."','".$regular1."','".$overtime1."','".$week2."','".$regular2."','".$overtime2."','".$week3."','".$regular3."','".$overtime3."','".$totalregular."','".$basicpay1."','".$basicpay2."','".$totalbasicpay."','".$regularovertime."','".$regularotpay."','".$specialovertime1."','".$specialovertime2."','".$specialovertime3."','".$totalspecialot."','".$specialotpay."','".$nightdifferential1."','".$nightdifferential2."','".$nightdifferential3."','".$totalnightdiff."','".$nighttimepay."','".$holiday."','".$holidaypay."','".$vacation."','".$vacationpay."','".$totalvacation."','".$grosspay1."','".$grosspay2."','".$totalgrosspay."','".$adjustment."','".$comment."','".$sssloan."','".$sssloan2."','".$hdmfloan."','".$hdmfloan2."','".$sss."','".$phic."','".$hdmf."','".$totaldeduction."','".$netpay."','".$category."','".$sssbracket."')");
                 }
                 while(mysql_affected_rows()!=1);
                 $check_query=mysql_affected_rows();
@@ -1713,6 +1735,8 @@ if(isset($_POST['btnUpdate']))
         $fullname=$rows['fullname'];
         $rate=number_format(validate($_POST['rate']),2);
         $rateperhour=number_format((str_replace(',','',$rate)/8),6);
+        $oldrate=number_format(validate($_POST['oldrate']),2);
+        $oldrateperhour=number_format((str_replace(',','',$oldrate)/8),6);
         
         if($cutoff=='1st' && $creditlast=='yes')
         {
@@ -1775,9 +1799,11 @@ if(isset($_POST['btnUpdate']))
             }
         }
         
+        $oldhrs=str_replace(',','',validate($_POST['oldhrs']));
         $week1=$paid+str_replace(',','',validate($_POST['week1']));
         $regular1=$week1-$paid;
         $overtime1=str_replace(',','',validate($_POST['overtime1']));
+        $oldOT1=str_replace(',','',validate($_POST['oldOT1']));
         
         $week2=str_replace(',','',validate($_POST['week2']));
         $regular2=$week2;
@@ -1788,10 +1814,14 @@ if(isset($_POST['btnUpdate']))
         $overtime3=str_replace(',','',validate($_POST['overtime3']));
         
         $totalregular=number_format(($regular1+$regular2+$regular3),2);
-        $basicpay1=number_format((str_replace(',','',$totalregular)*str_replace(',','',$rateperhour)),2);
+        $totalregular1=number_format(($regular1+$regular2+$regular3+$oldhrs),2);
+        $basicpay1=number_format((str_replace(',','',$totalregular)*str_replace(',','',$rateperhour)) + (str_replace(',','',$oldhrs)*str_replace(',','',$oldrateperhour)) ,2);
+        $totalregular=$totalregular1;
         
         $regularovertime=number_format(($overtime1+$overtime2+$overtime3),2);
-        $regularotpay=number_format(((str_replace(',','',$regularovertime)*str_replace(',','',$rateperhour))*1.25),2);
+        $regularovertime1=number_format(($overtime1+$overtime2+$overtime3+$oldOT1),2);
+        $regularotpay=number_format(((str_replace(',','',$regularovertime)*str_replace(',','',$rateperhour))*1.25) + ((str_replace(',','',$oldOT1)*str_replace(',','',$oldrateperhour))*1.25),2);
+        $regularovertime=$regularovertime1;
         
         $specialovertime1=validate($_POST['specialovertime1']);
         $specialovertime2=validate($_POST['specialovertime2']);
@@ -1799,33 +1829,39 @@ if(isset($_POST['btnUpdate']))
         $totalspecialot=$specialovertime1+$specialovertime2+$specialovertime3;
         $specialotpay=number_format((($totalspecialot*str_replace(',','',$rateperhour))*1.3),2);
         
-        $nightdifferential1=validate($_POST['nightdifferential1']);
-        $nightdifferential2=validate($_POST['nightdifferential2']);
-        $nightdifferential3=validate($_POST['nightdifferential3']);
+        $oldND1=validate($_POST['oldND1'][$x]);
+        $nightdifferential1=validate($_POST['nightdifferential1'][$x]);
+        $nightdifferential2=validate($_POST['nightdifferential2'][$x]);
+        $nightdifferential3=validate($_POST['nightdifferential3'][$x]);
         $totalnightdiff=$nightdifferential1+$nightdifferential2+$nightdifferential3;
-        $nighttimepay=number_format((($totalnightdiff*str_replace(',','',$rateperhour))*1.1),2);
+        $totalnightdiff1=$nightdifferential1+$nightdifferential2+$nightdifferential3+$oldND1;
+        $nighttimepay=number_format((($totalnightdiff*str_replace(',','',$rateperhour))*1.1) + (($oldND1*str_replace(',','',$oldrateperhour))*1.1),2);
+        $totalnightdiff=$totalnightdiff1;
         
-        $week1=$regular1+$overtime1+$nightdifferential1;
+        $week1=$regular1+$overtime1+$nightdifferential1+$oldhrs+$oldOT1+$oldND1;
         $week2=$regular2+$overtime2+$nightdifferential2;
         $week3=$regular3+$overtime3+$nightdifferential3;
         $overalltotal=$week1+$week2+$week3;
         
         $paid=number_format($paid,2);
+        $oldhrs=number_format($oldhrs,2);
         $week1=number_format($week1,2);
         $week2=number_format($week2,2);
         $week3=number_format($week3,2);
         $overalltotal=number_format($overalltotal,2);
-        $regular1=number_format($regular1,2);
+        $regular1=number_format($regular1+$oldhrs,2);
         $regular2=number_format($regular2,2);
         $regular3=number_format($regular3,2);
-        $overtime1=number_format($overtime1,2);
+        $oldOT1=number_format($oldOT1,2);
+        $overtime1=number_format($overtime1+$oldOT1,2);
         $overtime2=number_format($overtime2,2);
         $overtime3=number_format($overtime3,2);
         $specialovertime1=number_format($specialovertime1,2);
         $specialovertime2=number_format($specialovertime2,2);
         $specialovertime3=number_format($specialovertime3,2);
         $totalspecialot=number_format($totalspecialot,2);
-        $nightdifferential1=number_format($nightdifferential1,2);
+        $oldND1=number_format($oldND1,2);
+        $nightdifferential1=number_format($nightdifferential1+$oldND1,2);
         $nightdifferential2=number_format($nightdifferential2,2);
         $nightdifferential3=number_format($nightdifferential3,2);
         $totalnightdiff=number_format($totalnightdiff,2);
@@ -2566,7 +2602,7 @@ if(isset($_POST['btnUpdate']))
         mysql_query("SELECT * FROM ".$table." WHERE employeenumber='".$employeenumber."' AND payyear='".$payyear."' AND paymonth='".$paymonth."' AND cutoff='".$cutoff."' AND id!='".$id."'");
         if(mysql_affected_rows()<=0)
         {
-            mysql_query("UPDATE ".$table." SET payyear='".$payyear."',paymonth='".$paymonth."',startdate='".$startdate."',enddate='".$enddate."',cutoff='".$cutoff."',overalltotal='".$overalltotal."',week1='".$week1."',paid='".$paid."',regular1='".$regular1."',overtime1='".$overtime1."',week2='".$week2."',regular2='".$regular2."',overtime2='".$overtime2."',week3='".$week3."',regular3='".$regular3."',overtime3='".$overtime3."',totalregular='".$totalregular."',basicpay1='".$basicpay1."',basicpay2='".$basicpay2."',totalbasicpay='".$totalbasicpay."',regularovertime='".$regularovertime."',regularotpay='".$regularotpay."',specialovertime1='".$specialovertime1."',specialovertime2='".$specialovertime2."',specialovertime3='".$specialovertime3."',totalspecialot='".$totalspecialot."',specialotpay='".$specialotpay."',nightdifferential1='".$nightdifferential1."',nightdifferential2='".$nightdifferential2."',nightdifferential3='".$nightdifferential3."',totalnightdiff='".$totalnightdiff."',nighttimepay='".$nighttimepay."',holiday='".$holiday."',holidaypay='".$holidaypay."',vacation='".$vacation."',vacationpay='".$vacationpay."',totalvacation='".$totalvacation."',grosspay1='".$grosspay1."',grosspay2='".$grosspay2."',totalgrosspay='".$totalgrosspay."',adjustment='".$adjustment."',comment='".$comment."',sssloan='".$sssloan."',sssloan2='".$sssloan2."',hdmfloan='".$hdmfloan."',hdmfloan2='".$hdmfloan2."',sss='".$sss."',phic='".$phic."',hdmf='".$hdmf."',totaldeduction='".$totaldeduction."',netpay='".$netpay."',sssbracket='".$sssbracket."' WHERE id='".$id."'");
+            mysql_query("UPDATE ".$table." SET payyear='".$payyear."',paymonth='".$paymonth."',startdate='".$startdate."',enddate='".$enddate."',cutoff='".$cutoff."',oldrate='".$oldrate."',oldrateperhour='".$oldrateperhour."',oldhrs='".$oldhrs."',oldOT1='".$oldOT1."',oldND1='".$oldND1."',overalltotal='".$overalltotal."',week1='".$week1."',paid='".$paid."',regular1='".$regular1."',overtime1='".$overtime1."',week2='".$week2."',regular2='".$regular2."',overtime2='".$overtime2."',week3='".$week3."',regular3='".$regular3."',overtime3='".$overtime3."',totalregular='".$totalregular."',basicpay1='".$basicpay1."',basicpay2='".$basicpay2."',totalbasicpay='".$totalbasicpay."',regularovertime='".$regularovertime."',regularotpay='".$regularotpay."',specialovertime1='".$specialovertime1."',specialovertime2='".$specialovertime2."',specialovertime3='".$specialovertime3."',totalspecialot='".$totalspecialot."',specialotpay='".$specialotpay."',nightdifferential1='".$nightdifferential1."',nightdifferential2='".$nightdifferential2."',nightdifferential3='".$nightdifferential3."',totalnightdiff='".$totalnightdiff."',nighttimepay='".$nighttimepay."',holiday='".$holiday."',holidaypay='".$holidaypay."',vacation='".$vacation."',vacationpay='".$vacationpay."',totalvacation='".$totalvacation."',grosspay1='".$grosspay1."',grosspay2='".$grosspay2."',totalgrosspay='".$totalgrosspay."',adjustment='".$adjustment."',comment='".$comment."',sssloan='".$sssloan."',sssloan2='".$sssloan2."',hdmfloan='".$hdmfloan."',hdmfloan2='".$hdmfloan2."',sss='".$sss."',phic='".$phic."',hdmf='".$hdmf."',totaldeduction='".$totaldeduction."',netpay='".$netpay."',sssbracket='".$sssbracket."' WHERE id='".$id."'");
             if(mysql_affected_rows()>0)
             {
                 alert('SUCCESS: Payroll record has been updated.');

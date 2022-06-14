@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v14.22.0602.1725********************//
+<?php //********************BTIC Invoicing & Payroll System v15.22.0613.2008********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
@@ -110,6 +110,11 @@ if($_SESSION['printslip']!='thirteenthmonth' && $_SESSION['printslip']=='payslip
             $employeetype=$rows['employeetype'];
             $employeenumber=$rows['employeenumber'];
             $fullname=$rows['fullname'];
+            $oldrate=$rows['oldrate'];
+            $oldrateperhour=$rows['oldrateperhour'];
+            $oldhrs=$rows['oldhrs'];
+            $oldOT1=$rows['oldOT1'];
+            $oldND1=$rows['oldND1'];
             $rate=$rows['rate'];
             $rateperhour=number_format((str_replace(',','',$rate)/8),6);
             $week1=$rows['week1'];
@@ -182,6 +187,11 @@ if($_SESSION['printslip']!='thirteenthmonth' && $_SESSION['printslip']=='payslip
         <input name="cutoff" type="hidden" value="<?=$cutoff;?>"/>
         <input name="employeenumber" type="hidden" value="<?=$employeenumber;?>"/>
         <input name="fullname" type="hidden" value="<?=$fullname;?>"/>
+        <input name="oldrate" type="hidden" value="<?=$oldrate;?>"/>
+        <input name="oldrateperhour" type="hidden" value="<?=$oldrateperhour;?>"/>
+        <input name="oldhrs" type="hidden" value="<?=$oldhrs;?>"/>
+        <input name="oldOT1" type="hidden" value="<?=$oldOT1;?>"/>
+        <input name="oldND1" type="hidden" value="<?=$oldND1;?>"/>
         <input name="rate" type="hidden" value="<?=$rate;?>"/>
         <input name="week1" type="hidden" value="<?=$week1;?>"/>
         <input name="paid" type="hidden" value="<?=$paid;?>"/>
@@ -253,6 +263,11 @@ if($_SESSION['printslip']!='thirteenthmonth' && $_SESSION['printslip']=='payslip
                 $employeetype=$rows['employeetype'];
                 $employeenumber=$rows['employeenumber'];
                 $fullname=$rows['fullname'];
+                $oldrate=$rows['oldrate'];
+                $oldrateperhour=$rows['oldrateperhour'];
+                $oldhrs=$rows['oldhrs'];
+                $oldOT1=$rows['oldOT1'];
+                $oldND1=$rows['oldND1'];
                 $rate=$rows['rate'];
                 $rateperhour=number_format((str_replace(',','',$rate)/8),6);
                 $week1=$rows['week1'];
@@ -325,6 +340,11 @@ if($_SESSION['printslip']!='thirteenthmonth' && $_SESSION['printslip']=='payslip
             <input name="cutoff" type="hidden" value="<?=$cutoff;?>"/>
             <input name="employeenumber" type="hidden" value="<?=$employeenumber;?>"/>
             <input name="fullname" type="hidden" value="<?=$fullname;?>"/>
+            <input name="oldrate" type="hidden" value="<?=$oldrate;?>"/>
+            <input name="oldrateperhour" type="hidden" value="<?=$oldrateperhour;?>"/>
+            <input name="oldhrs" type="hidden" value="<?=$oldhrs;?>"/>
+            <input name="oldOT1" type="hidden" value="<?=$oldOT1;?>"/>
+            <input name="oldND1" type="hidden" value="<?=$oldND1;?>"/>
             <input name="rate" type="hidden" value="<?=$rate;?>"/>
             <input name="week1" type="hidden" value="<?=$week1;?>"/>
             <input name="paid" type="hidden" value="<?=$paid;?>"/>
@@ -392,6 +412,11 @@ if($_SESSION['printslip']!='thirteenthmonth' && $_SESSION['printslip']=='payslip
                 $employeetype=$rows['employeetype'];
                 $employeenumber=$rows['employeenumber'];
                 $fullname=$rows['fullname'];
+                $oldrate=$rows['oldrate'];
+                $oldrateperhour=$rows['oldrateperhour'];
+                $oldhrs=$rows['oldhrs'];
+                $oldOT1=$rows['oldOT1'];
+                $oldND1=$rows['oldND1'];
                 $rate=$rows['rate'];
                 $rateperhour=number_format((str_replace(',','',$rate)/8),6);
                 $week1=$rows['week1'];
@@ -475,6 +500,11 @@ if($_SESSION['printslip']!='thirteenthmonth' && $_SESSION['printslip']=='payslip
                 $employeetype=$rows['employeetype'];
                 $employeenumber=$rows['employeenumber'];
                 $fullname=$rows['fullname'];
+                $oldrate=$rows['oldrate'];
+                $oldrateperhour=$rows['oldrateperhour'];
+                $oldhrs=$rows['oldhrs'];
+                $oldOT1=$rows['oldOT1'];
+                $oldND1=$rows['oldND1'];
                 $rate=$rows['rate'];
                 $rateperhour=number_format((str_replace(',','',$rate)/8),6);
                 $week1=$rows['week1'];
