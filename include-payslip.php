@@ -1,4 +1,4 @@
-<?php //********************BTIC Invoicing & Payroll System v15.22.0831.1140********************//
+<?php //********************BTIC Sales & Payroll System v15.22.1210.2005********************//
 if($_SESSION['printslip']=='thirteenthmonth')
 {
     $employee=$_SESSION['employee'];
