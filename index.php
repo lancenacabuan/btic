@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.22.1210.2005********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0202.1620********************//
 include('functions.php');
 $_SESSION['formtype']=NULL;
 $_SESSION['HTTP_REFERER']='index.php';
@@ -111,6 +111,47 @@ else
     }
     else
     {
+        if(isset($_POST['btnSubmit']))
+        {
+            $username=validate($_POST['username']);
+            $password=validate($_POST['password']);
+            $content=mysql_query("SELECT * FROM users WHERE username='$username' AND password='$password'");
+            $rows=mysql_fetch_array($content);
+
+            if(mysql_affected_rows()>0)
+            {
+                $directory='C:/dbBackup';
+                if(!is_dir($directory))
+                { mkdir($directory); }
+
+                $_SESSION['username']=$rows['username'];
+                php_security();
+
+                $usertype=$rows['usertype'];
+                $lastname=$rows['lastname'];
+                $firstname=$rows['firstname'];
+                $fullname=$firstname." ".$lastname;
+
+                $_SESSION['usertype']=$usertype;
+                $_SESSION['lastname']=$lastname;
+                $_SESSION['firstname']=$firstname;
+                $_SESSION['fullname']=$fullname;
+
+                $title=' - Welcome';
+                $tab=array('#'=>'Welcome');
+                html_start($title,$tab);
+                welcome($_SESSION['fullname']);
+                html_end();
+                backup();
+                reload_page();
+            }
+            else
+            {
+                $info='ERROR: Invalid username and password combination!!!';
+                alert($info);
+                redirect_page();
+            }
+        }
         if($_SESSION['username']==NULL)
         {
             $title=NULL;
@@ -146,47 +187,6 @@ else
             html_start($title,$tab);
             welcome($_SESSION['fullname']);
             html_end();
-        }
-
-        if(isset($_POST['btnSubmit']))
-        {
-            $username=validate($_POST['username']);
-            $password=validate($_POST['password']);
-            $content=mysql_query("SELECT * FROM users WHERE username='$username' AND password='$password'");
-            $rows=mysql_fetch_array($content);
-
-            if(mysql_affected_rows()>0)
-            {
-                $directory='C:/dbBackup';
-                if(!is_dir($directory))
-                { mkdir($directory); }
-
-                $_SESSION['username']=$rows['username'];
-                php_security();
-
-                $usertype=$rows['usertype'];
-                $lastname=$rows['lastname'];
-                $firstname=$rows['firstname'];
-                $fullname=$firstname." ".$lastname;
-
-                $_SESSION['usertype']=$usertype;
-                $_SESSION['lastname']=$lastname;
-                $_SESSION['firstname']=$firstname;
-                $_SESSION['fullname']=$fullname;
-
-                $title=' - Welcome';
-                $tab=array('#'=>'Welcome');
-                html_start($title,$tab);
-                welcome($_SESSION['fullname']);
-                html_end();
-                reload_page();
-            }
-            else
-            {
-                $info='ERROR: Invalid username and password combination!!!';
-                alert($info);
-                redirect_page();
-            }
         }
     }
 }

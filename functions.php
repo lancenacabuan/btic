@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.22.1210.2005********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0202.1620********************//
 error_reporting(0);
 session_start();
 mysql_connect("localhost","root");
@@ -1412,6 +1412,71 @@ function confirm($action)
 
     else if($action=='delete')
     { echo("return confirm('DELETE: Do you really want to PERMANENTLY DELETE this record?');"); }
+}
+
+function backup()
+{
+    $alert=array();
+    $alert[]='INITIATED: COMPLETE [database] BACKUP!!!\n\n';
+
+    if($_SESSION['usertype']=='btic_admin')
+    {
+        $filename="C:/dbBackup/".date("ymd-His-")."users.sql";
+        $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM users");
+        if(!$retval)
+        { $alert[]='ERROR: Database BACKUP [users] FAILED!\n'; }
+        else
+        { $alert[]='SUCCESS: Database BACKUP [users] SUCCESSFUL!\n'; }
+    }
+    
+    if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_payroll')
+    {
+        $filename="C:/dbBackup/".date("ymd-His-")."employees.sql";
+        $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM employees");
+        if(!$retval)
+        { $alert[]='ERROR: Database BACKUP [employees] FAILED!\n'; }
+        else
+        { $alert[]='SUCCESS: Database BACKUP [employees] SUCCESSFUL!\n'; }
+
+        $filename="C:/dbBackup/".date("ymd-His-")."payroll.sql";
+        $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM payroll");
+        if(!$retval)
+        { $alert[]='ERROR: Database BACKUP [payroll] FAILED!\n'; }
+        else
+        { $alert[]='SUCCESS: Database BACKUP [payroll] SUCCESSFUL!\n'; }
+    }
+
+    if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
+    {
+        $filename="C:/dbBackup/".date("ymd-His-")."accounts.sql";
+        $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM accounts");
+        if(!$retval)
+        { $alert[]='ERROR: Database BACKUP [accounts] FAILED!\n'; }
+        else
+        { $alert[]='SUCCESS: Database BACKUP [accounts] SUCCESSFUL!\n'; }
+    
+        $filename="C:/dbBackup/".date("ymd-His-")."receivables.sql";
+        $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM receivables");
+        if(!$retval)
+        { $alert[]='ERROR: Database BACKUP [receivables] FAILED!\n'; }
+        else
+        { $alert[]='SUCCESS: Database BACKUP [receivables] SUCCESSFUL!\n'; }
+    
+        $filename="C:/dbBackup/".date("ymd-His-")."collections.sql";
+        $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM collections");
+        if(!$retval)
+        { $alert[]='ERROR: Database BACKUP [collections] FAILED!\n'; }
+        else
+        { $alert[]='SUCCESS: Database BACKUP [collections] SUCCESSFUL!\n'; }
+    
+        $filename="C:/dbBackup/".date("ymd-His-")."returns.sql";
+        $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM returns");
+        if(!$retval)
+        { $alert[]='ERROR: Database BACKUP [returns] FAILED!\n'; }
+        else
+        { $alert[]='SUCCESS: Database BACKUP [returns] SUCCESSFUL!\n'; }
+    }
+    alert(implode($alert));
 }
 
 function alert($info)
