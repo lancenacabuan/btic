@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0209.1630********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0209.1645********************//
 error_reporting(0);
 session_start();
 mysql_connect("localhost","root");

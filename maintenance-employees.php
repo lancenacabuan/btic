@@ -1,8 +1,8 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0209.1630********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0209.1645********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
-{ redirect_page(); }
+{ redirect_home(); }
 if(isset($_POST['btnVisibility']))
 {
     if($_SESSION['visibility']=='hidden')

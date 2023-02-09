@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0209.1630********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0209.1645********************//
 error_reporting(0);
 session_start();
 mysql_connect("localhost","root");
@@ -1525,6 +1525,14 @@ function navigate_page($location)
 ?>
     <script type="text/javascript">location="<?=$location;?>";</script>
 <?php
+}
+
+function redirect_home()
+{
+    alert('ERROR: UNAUTHORIZED ACCESS');
+    ?>
+    <script type="text/javascript">window.location="index.php";</script>
+    <?php
 }
 
 function redirect_page()
