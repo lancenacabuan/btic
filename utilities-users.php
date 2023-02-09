@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0202.1620********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0209.1630********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin')
@@ -32,13 +32,13 @@ $colname[]='id';
     <label for="usertype">User Type</label>
     <select class="form-control" id="usertype" name="usertype" required autofocus>
     <?php
-    if($_POST['usertype']!='btic_admin' && $_POST['usertype']!='btic_payroll' && $_POST['usertype']!='btic_invoice')
+    if($_POST['usertype']!='btic_admin' && $_POST['usertype']!='btic_payroll' && $_POST['usertype']!='btic_sales')
     { $selected1='selected'; }
     else if($_POST['usertype']=='btic_admin')
     { $selected2='selected'; }
     else if($_POST['usertype']=='btic_payroll')
     { $selected3='selected'; }
-    else if($_POST['usertype']=='btic_invoice')
+    else if($_POST['usertype']=='btic_sales')
     { $selected4='selected'; }
     else
     {
@@ -51,7 +51,7 @@ $colname[]='id';
         <option value="" disabled <?=$selected1;?>>--required-- (select an option)</option>
         <option value="btic_admin" <?=$selected2;?>>ADMIN</option>
         <option value="btic_payroll" <?=$selected3;?>>PAYROLL</option>
-        <option value="btic_invoice" <?=$selected4;?>>INVOICE</option>
+        <option value="btic_sales" <?=$selected4;?>>SALES</option>
     </select>
 </div>
 <?php

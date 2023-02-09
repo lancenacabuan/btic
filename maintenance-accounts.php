@@ -1,7 +1,7 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0202.1620********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0209.1630********************//
 include('functions.php');
 php_security();
-if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_invoice')
+if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_sales')
 { redirect_page(); }
 $table='accounts';
 $_SESSION['formtype']=$table;

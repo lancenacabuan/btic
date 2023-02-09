@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0202.1620********************// ?>
+<?php //********************BTIC Sales & Payroll System v15.23.0209.1630********************// ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,10 +128,10 @@ if($_GET['db']=='backup')
         <?php
         die();
     }
-    else if($_GET['backup']=='invoice')
+    else if($_GET['backup']=='sales')
     {
         $alert=array();
-        $alert[]='INITIATED: FULL [invoice] BACKUP!!!\n\n';
+        $alert[]='INITIATED: FULL [sales] BACKUP!!!\n\n';
 
         $filename="C:/dbBackup/".date("ymd-His-")."accounts.sql";
         $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM accounts");
@@ -289,10 +289,10 @@ else if($_GET['db']=='restore')
                         <option value="PAYROLL">Complete PAYROLL Database RESTORE</option>
                     <?php
                     }
-                    if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
+                    if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_sales')
                     {
                     ?>
-                        <option value="INVOICE">Complete INVOICE Database RESTORE</option>
+                        <option value="SALES">Complete SALES Database RESTORE</option>
                     <?php
                     }
                     ?>
@@ -462,7 +462,7 @@ else if($_GET['db']=='restore')
                     $alert[]='ERROR: Database RESTORE ['.$table.'] FAILED!!!\n';
                 }
             }
-            if($_GET['username']=='ADMIN' || $_GET['username']=='INVOICE')
+            if($_GET['username']=='ADMIN' || $_GET['username']=='SALES')
             {
                 $table='accounts';
                 $dirname="C:/dbBackup/";

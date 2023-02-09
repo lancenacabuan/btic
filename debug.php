@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0202.1620********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0209.1630********************//
 error_reporting(0);
 session_start();
 mysql_connect("localhost","root");
@@ -38,7 +38,7 @@ if($debug=='cutoff')
 }
 //******************************[DEBUG PAYROLL - Cut-Off Reset Patch]******************************//
 
-//******************************[DEBUG INVOICE - S.I. Number Issue Bug Fix]******************************//
+//******************************[DEBUG SALES - S.I. Number Issue Bug Fix]******************************//
 if($debug=='sinum')
 {    
     mysql_query("DELETE t1 FROM receivables t1 JOIN collections t2 ON t1.sinum = t2.sinum;");
@@ -73,7 +73,7 @@ if($debug=='sinum')
     $alert2=number_format($alert2);
     alert('DELETED '.$alert2.' RECORDS IN RECEIVABLES FROM MULTIPLE INVOICES!!!');
 }
-//******************************[DEBUG INVOICE - S.I. Number Issue Bug Fix]******************************//
+//******************************[DEBUG SALES - S.I. Number Issue Bug Fix]******************************//
 function validate($data)
 {
     while($data!=NULL)

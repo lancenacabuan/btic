@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0202.1620********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0209.1630********************//
 error_reporting(0);
 session_start();
 mysql_connect("localhost","root");
@@ -593,7 +593,7 @@ function html_start($title,$tab)
                     <li><a href="maintenance-employees.php">Employees</a></li>
                 <?php
                 }
-                if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
+                if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_sales')
                 {
                 ?>
                     <li><a href="maintenance-accounts.php">Accounts</a></li>
@@ -615,7 +615,7 @@ function html_start($title,$tab)
                     <li><a href="transactions-payroll.php">Payroll</a></li>
                 <?php
                 }
-                if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
+                if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_sales')
                 {
                 ?>
                     <li><a href="transactions-receivables.php">Receivables</a></li>
@@ -639,7 +639,7 @@ function html_start($title,$tab)
                     <li><a href="reports-payroll.php">Payroll</a></li>
                 <?php
                 }
-                if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
+                if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_sales')
                 {
                 ?>
                     <li><a href="reports-summary.php">Summary</a></li>
@@ -676,10 +676,10 @@ function html_start($title,$tab)
             $db_color='label-primary';
             $db_badge='PAYROLL';
         }
-        else if($_SESSION['usertype'] == 'btic_invoice')
+        else if($_SESSION['usertype'] == 'btic_sales')
         {
             $db_color='label-success';
-            $db_badge='INVOICE';
+            $db_badge='SALES';
         }
         else
         {
@@ -726,10 +726,10 @@ function html_start($title,$tab)
                     <li><a href="index-backup.php?db=backup&amp;backup=payroll" onclick="return confirm('CONFIRM: Do you really want to perform a [Full PAYROLL Backup]???')"><strong>Full Payroll Backup</strong><br />(Employees &amp; Payroll)</a></li>
                     <?php
                     }
-                    if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
+                    if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_sales')
                     {
                     ?>
-                    <li><a href="index-backup.php?db=backup&amp;backup=invoice" onclick="return confirm('CONFIRM: Do you really want to perform a [Full INVOICE Backup]???')"><strong>Full Invoice Backup</strong><br />(Accounts, Receivables, <br />Collections, &amp; Returns)</a></li>
+                    <li><a href="index-backup.php?db=backup&amp;backup=sales" onclick="return confirm('CONFIRM: Do you really want to perform a [Full SALES Backup]???')"><strong>Full Sales Backup</strong><br />(Accounts, Receivables, <br />Collections, &amp; Returns)</a></li>
                     <?php
                     }
                     ?>
@@ -844,7 +844,7 @@ function welcome($fullname)
             </tr>
             <?php
             }
-            if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
+            if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_sales')
             {
             ?>
             <tr>
@@ -1446,7 +1446,7 @@ function backup()
         { $alert[]='SUCCESS: Database BACKUP [payroll] SUCCESSFUL!\n'; }
     }
 
-    if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_invoice')
+    if($_SESSION['usertype']=='btic_admin' || $_SESSION['usertype']=='btic_sales')
     {
         $filename="C:/dbBackup/".date("ymd-His-")."accounts.sql";
         $retval=mysql_query("SELECT * INTO OUTFILE '$filename' FROM accounts");
