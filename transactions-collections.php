@@ -1,20 +1,22 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0209.2200********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0531.2052********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_sales')
 { redirect_home(); }
 $table='collections';
+$upper="COLLECTIONS";
+$ucfirst="Collections";
 $_SESSION['formtype']=$table;
 $_SESSION['HTTP_REFERER']='transactions-collections.php';
 $colwidth=array();
 $thname=array();
 $colname=array();
 $component=NULL;
-$title=' - Accounts Collection';
-$tab=array('transactions-collections.php'=>'Collections');
+$title=' - Accounts '.$ucfirst.'';
+$tab=array('transactions-collections.php'=>''.$ucfirst.'');
 html_start($title,$tab);
 
-$form='Accounts Collection Form';
+$form='Accounts '.$ucfirst.' Form';
 $new='transactions-collections.php';
 form_start($form,$new);
 
@@ -209,19 +211,88 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
     </select>
     <label style="margin-left: 20px;">Year</label>
     <input style="width: 100px;" class="form-control" type="number" name="year" min="2000" max="2999" step="1" value="<?=$yearholder;?>">
-    <br /><label style="margin-left: 20px;">Invoice #</label>
-    <input class="form-control" type="text" name="invoice" value="<?=$_POST['invoice'];?>" placeholder="[Search Invoice Number...]">
-    <span style="margin-left: 20px;"></span>
-    <label style="margin-left: 20px;">Check #</label>
-    <input class="form-control" type="text" name="checknum" value="<?=$_POST['checknum'];?>" placeholder="[Search Check Number...]">
-    <span style="margin-left: 20px;"></span>
-    <label style="margin-left: 20px;">Delivery Date</label>
-    <input class="form-control" type="date" name="datefilter" value="<?=$_POST['datefilter'];?>"><br />
+    <br />
+    <br />
+    <div class="form-group">
+        <label for="filter-search">Filter Search By:</label>
+        <select class="selectpicker form-control" id="filter-search">
+            <option value="" selected disabled>Select an Option</option>
+            <option value="invoice">Sales Invoice #</option>
+            <option value="po_num">Purchase Order #</option>
+            <option value="checkno">Check #</option>
+            <option value="or_num">Official Receipt #</option>
+            <option value="datefilter">Delivery Date</option>
+        </select>
+    </div>
+    <input class="form-control filters" type="text" id="invoice" name="invoice" value="<?=$_POST['invoice'];?>" placeholder="[Search Sales Invoice Number...]" style="width: 308px; text-align: center;">
+    <input class="form-control filters" type="text" id="po_num" name="po_num" value="<?=$_POST['po_num'];?>" placeholder="[Search Purchase Order Number...]" style="width: 308px; text-align: center;">
+    <input class="form-control filters" type="text" id="checkno" name="checkno" value="<?=$_POST['checkno'];?>" placeholder="[Search Check Number...]" style="width: 308px; text-align: center;">
+    <input class="form-control filters" type="text" id="or_num" name="or_num" value="<?=$_POST['or_num'];?>" placeholder="[Search Official Receipt Number...]" style="width: 308px; text-align: center;">
+    <input class="form-control filters" type="date" id="datefilter" name="datefilter" value="<?=$_POST['datefilter'];?>" style="width: 200px; text-align: center;"><br />
+    <br />
     <input class="form-control btn btn-primary" name="btnSelect" type="submit" value="SELECT">
     <input class="form-control btn btn-success" name="btnShowAll" type="submit" value="SHOW ALL RECORDS">
     <a style="width: 100px;" class="form-control btn btn-warning" href="transactions-collections.php">RESET</a>
     </form>
     <br />
+    <script>
+        $('#filter-search').on('change', function(){
+            if($('#customer').val() || $('#month').val()){
+                $('#customer').val('');
+                $('#customer').trigger('chosen:updated');
+                $('#month').val('')
+            }
+        });
+        setInterval(() => {
+            if($('#customer').val() || $('#month').val()){
+                $('#filter-search').val('');
+            }
+            $('.filters').each(function(){
+                if(!$(this).is(':visible')){
+                    $(this).val('');
+                }
+            });
+            if($('#filter-search').val() == 'invoice'){
+                $('#invoice').show();
+                $('#po_num').hide();
+                $('#checkno').hide();
+                $('#or_num').hide();
+                $('#datefilter').hide();
+            }
+            else if($('#filter-search').val() == 'po_num'){
+                $('#invoice').hide();
+                $('#po_num').show();
+                $('#checkno').hide();
+                $('#or_num').hide();
+                $('#datefilter').hide();
+            }
+            else if($('#filter-search').val() == 'checkno'){
+                $('#invoice').hide();
+                $('#po_num').hide();
+                $('#checkno').show();
+                $('#or_num').hide();
+                $('#datefilter').hide();
+            }
+            else if($('#filter-search').val() == 'or_num'){
+                $('#invoice').hide();
+                $('#po_num').hide();
+                $('#checkno').hide();
+                $('#or_num').show();
+                $('#datefilter').hide();
+            }
+            else if($('#filter-search').val() == 'datefilter'){
+                $('#invoice').hide();
+                $('#po_num').hide();
+                $('#checkno').hide();
+                $('#or_num').hide();
+                $('#datefilter').show();
+            }
+            else{
+                $('.filters').hide();
+                $('.filters').val('');
+            }
+        }, 0);
+    </script>
     <?php
     if(isset($_POST['btnSelect']))
     {
@@ -233,7 +304,9 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         else
         { $date=NULL; }
         $invoice=$_POST['invoice'];
-        $checknum=$_POST['checknum'];
+        $po_num=$_POST['po_num'];
+        $checkno=$_POST['checkno'];
+        $or_num=$_POST['or_num'];
         $datefilter=$_POST['datefilter'];
     }
     else if(isset($_POST['btnShowAll']))
@@ -243,29 +316,43 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         $year=NULL;
         $date=NULL;
         $invoice=NULL;
-        $checknum=NULL;
+        $po_num=NULL;
+        $checkno=NULL;
+        $or_num=NULL;
         $datefilter=NULL;
     }
     
-    if(($invoice && $checknum) || ($checknum && $datefilter) || ($invoice && $datefilter))
+    if(($invoice && $checkno) || ($checkno && $datefilter) || ($invoice && $datefilter))
     { alert('ERROR: Invalid form input!!! Please try again.....'); }
     else if($invoice!=NULL)
     {
         $content=mysql_query("SELECT * FROM ".$table." WHERE sinum LIKE '%".$invoice."%' ORDER BY sinum");
         $total=mysql_affected_rows();
-        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Sales Invoice #'.$invoice.' record/s in COLLECTIONS.');
+        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Sales Invoice #'.$invoice.' record/s in '.$upper.'.');
     }
-    else if($checknum!=NULL)
+    else if($po_num!=NULL)
     {
-        $content=mysql_query("SELECT * FROM ".$table." WHERE checknum LIKE '%".$checknum."%' ORDER BY sinum");
+        $content=mysql_query("SELECT * FROM ".$table." WHERE ponum LIKE '%".$po_num."%' ORDER BY ponum");
         $total=mysql_affected_rows();
-        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Check #'.$checknum.' record/s in COLLECTIONS.');
+        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Purchase Order #'.$invoice.' record/s in '.$upper.'.');
+    }
+    else if($checkno!=NULL)
+    {
+        $content=mysql_query("SELECT * FROM ".$table." WHERE checknum LIKE '%".$checkno."%' ORDER BY sinum");
+        $total=mysql_affected_rows();
+        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Check #'.$checkno.' record/s in '.$upper.'.');
+    }
+    else if($or_num!=NULL)
+    {
+        $content=mysql_query("SELECT * FROM ".$table." WHERE ornum LIKE '%".$or_num."%' ORDER BY ornum");
+        $total=mysql_affected_rows();
+        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Official Receipt #'.$invoice.' record/s in '.$upper.'.');
     }
     else if($datefilter!=NULL)
     {
         $content=mysql_query("SELECT * FROM ".$table." WHERE date1 LIKE '%".$datefilter."%' ORDER BY sinum");
         $total=mysql_affected_rows();
-        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Delivery Date '.$datefilter.' record/s in COLLECTIONS.');
+        alert('SUCCESS: '.$total.' matching record/s found.\nShowing Delivery Date '.$datefilter.' record/s in '.$upper.'.');
     }
     else
     {
@@ -280,7 +367,7 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         {
             $content=mysql_query("SELECT * FROM ".$table." ORDER BY sinum");
             $total=mysql_affected_rows();
-            alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s in COLLECTIONS.');
+            alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s in '.$upper.'.');
         }
         else if($month==NULL && $year==NULL && isset($_POST['btnSelect']))
         {
@@ -289,21 +376,21 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
             $query=("SELECT * FROM ".$table." $addstring $sqlstring ORDER BY sinum");
             $content=mysql_query($query);
             $total=mysql_affected_rows();
-            alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'in COLLECTIONS.');
+            alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'in '.$upper.'.');
         }
         else if($month==NULL && $year!=NULL && isset($_POST['btnSelect']))
         {
             $query=("SELECT * FROM ".$table." WHERE $sqlstring date1 LIKE '".$year."-%' ORDER BY sinum");
             $content=mysql_query($query);
             $total=mysql_affected_rows();
-            alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'from YEAR '.$year.' in COLLECTIONS.');
+            alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'from YEAR '.$year.' in '.$upper.'.');
         }
         else if($month!=NULL && $year!=NULL && isset($_POST['btnSelect']))
         {
             $query=("SELECT * FROM ".$table." WHERE $sqlstring date1 LIKE '%".$date."%' ORDER BY sinum");
             $content=mysql_query($query);
             $total=mysql_affected_rows();
-            alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'from '.strtoupper(date('F',mktime(0,0,0,$month,10))).' '.$year.' in COLLECTIONS.');
+            alert('SUCCESS: '.$total.' matching record/s found.\nShowing ALL record/s '.$phpstring.'from '.strtoupper(date('F',mktime(0,0,0,$month,10))).' '.$year.' in '.$upper.'.');
         }
         else
         {
@@ -333,7 +420,7 @@ sql_execute_query($new,$select,$id,$insert,$update,$delete,$colwidth,$thname,$co
         <?php
     }
     else
-    { $_SESSION['tblname']='tblCollections'; }
+    { $_SESSION['tblname']='tbl'.$ucfirst.''; }
     ?>
     <table id="<?=$_SESSION['tblname'];?>" class="table-striped nowrap">
     <thead>
