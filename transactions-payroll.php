@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0531.2052********************//
+<?php //********************BTIC Sales & Payroll System v15.23.0609.1748********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_payroll')
@@ -618,7 +618,94 @@ if(isset($_POST['btnSave']))
         
         if($cutoff=='1st')
         {
-            if($payyear>=2021)
+            if($payyear>=2023)
+            {
+                $grosspay2='0.00';
+                $totalgrosspay=$grosspay1;
+                $tg=str_replace(',','',$totalgrosspay);
+                do
+                {
+                    if($tg<4250.00)
+                    { $sss=180.00; }
+                    else if($tg<=4749.99)
+                    { $sss=202.50; }
+                    else if($tg<=5249.99)
+                    { $sss=225.00; }
+                    else if($tg<=5749.99)
+                    { $sss=247.50; }
+                    else if($tg<=6249.99)
+                    { $sss=270.00; }
+                    else if($tg<=6749.99)
+                    { $sss=292.50; }
+                    else if($tg<=7249.99)
+                    { $sss=315.00; }
+                    else if($tg<=7749.99)
+                    { $sss=337.50; }
+                    else if($tg<=8249.99)
+                    { $sss=360.00; }
+                    else if($tg<=8749.99)
+                    { $sss=382.50; }
+                    else if($tg<=9249.99)
+                    { $sss=405.00; }
+                    else if($tg<= 9749.99)
+                    { $sss=427.50; }
+                    else if($tg<=10249.99)
+                    { $sss=450.00; }
+                    else if($tg<=10749.99)
+                    { $sss=472.50; }
+                    else if($tg<=11249.99)
+                    { $sss=495.00; }
+                    else if($tg<=11749.99)
+                    { $sss=517.50; }
+                    else if($tg<=12249.99)
+                    { $sss=540.00; }
+                    else if($tg<=12749.99)
+                    { $sss=562.50; }
+                    else if($tg<=13249.99)
+                    { $sss=585.00; }
+                    else if($tg<=13749.99)
+                    { $sss=607.50; }
+                    else if($tg<=14249.99)
+                    { $sss=630.00; }
+                    else if($tg<=14749.99)
+                    { $sss=652.50; }
+                    else if($tg<=15249.99)
+                    { $sss=675.00; }
+                    else if($tg<=15749.99)
+                    { $sss=697.50; }
+                    else if($tg<=16249.99)
+                    { $sss=720.00; }
+                    else if($tg<=16749.99)
+                    { $sss=742.50; }
+                    else if($tg<=17249.99)
+                    { $sss=765.00; }
+                    else if($tg<=17749.99)
+                    { $sss=787.50; }
+                    else if($tg<=18249.99)
+                    { $sss=810.00; }
+                    else if($tg<=18749.99)
+                    { $sss=832.50; }
+                    else if($tg<=19249.99)
+                    { $sss=855.00; }
+                    else if($tg<=19749.99)
+                    { $sss=877.50; }
+                    else if($tg<=20249.99)
+                    { $sss=900.00; }
+                    else if($tg<= 20749.99)
+                    { $sss=877.50; }
+                    else if($tg<=21249)
+                    { $sss=900.00; }
+                    else
+                    { $sss=900.00; }
+                }
+                while($sss<180.00 || $sss>900.00);
+                $sss=number_format($sss,2);
+                $basicpay2='0.00';
+                $totalbasicpay=$basicpay1;
+                $phic='0.00';
+                $hdmf='150.00';
+            }
+            else if($payyear>=2021)
             {
                 $grosspay2='0.00';
                 $totalgrosspay=$grosspay1;
@@ -881,7 +968,133 @@ if(isset($_POST['btnSave']))
         }
         else
         {
-            if($payyear>=2021)
+            if($payyear>=2023)
+            {
+                $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);
+                $tg=str_replace(',','',$totalgrosspay);
+                do
+                {
+                    if($tg<4250.00)
+                    { $sss=180.00; }
+                    else if($tg<=4749.99)
+                    { $sss=202.50; }
+                    else if($tg<=5249.99)
+                    { $sss=225.00; }
+                    else if($tg<=5749.99)
+                    { $sss=247.50; }
+                    else if($tg<=6249.99)
+                    { $sss=270.00; }
+                    else if($tg<=6749.99)
+                    { $sss=292.50; }
+                    else if($tg<=7249.99)
+                    { $sss=315.00; }
+                    else if($tg<=7749.99)
+                    { $sss=337.50; }
+                    else if($tg<=8249.99)
+                    { $sss=360.00; }
+                    else if($tg<=8749.99)
+                    { $sss=382.50; }
+                    else if($tg<=9249.99)
+                    { $sss=405.00; }
+                    else if($tg<= 9749.99)
+                    { $sss=427.50; }
+                    else if($tg<=10249.99)
+                    { $sss=450.00; }
+                    else if($tg<=10749.99)
+                    { $sss=472.50; }
+                    else if($tg<=11249.99)
+                    { $sss=495.00; }
+                    else if($tg<=11749.99)
+                    { $sss=517.50; }
+                    else if($tg<=12249.99)
+                    { $sss=540.00; }
+                    else if($tg<=12749.99)
+                    { $sss=562.50; }
+                    else if($tg<=13249.99)
+                    { $sss=585.00; }
+                    else if($tg<=13749.99)
+                    { $sss=607.50; }
+                    else if($tg<=14249.99)
+                    { $sss=630.00; }
+                    else if($tg<=14749.99)
+                    { $sss=652.50; }
+                    else if($tg<=15249.99)
+                    { $sss=675.00; }
+                    else if($tg<=15749.99)
+                    { $sss=697.50; }
+                    else if($tg<=16249.99)
+                    { $sss=720.00; }
+                    else if($tg<=16749.99)
+                    { $sss=742.50; }
+                    else if($tg<=17249.99)
+                    { $sss=765.00; }
+                    else if($tg<=17749.99)
+                    { $sss=787.50; }
+                    else if($tg<=18249.99)
+                    { $sss=810.00; }
+                    else if($tg<=18749.99)
+                    { $sss=832.50; }
+                    else if($tg<=19249.99)
+                    { $sss=855.00; }
+                    else if($tg<=19749.99)
+                    { $sss=877.50; }
+                    else if($tg<=20249.99)
+                    { $sss=900.00; }
+                    else if($tg<= 20749.99)
+                    { $sss=877.50; }
+                    else if($tg<=21249)
+                    { $sss=900.00; }
+                    else
+                    { $sss=900.00; }
+                }
+                while($sss<180.00 || $sss>900.00);
+                $sss=number_format(($sss-$sss2),2);
+                $totalbasicpay=number_format((str_replace(',','',$basicpay1))+(str_replace(',','',$basicpay2)),2);
+                $tb=str_replace(',','',$totalbasicpay);
+                if($payyear<2020)
+                {
+                    $phic1='137.50';
+                    $phic2='0.0275';
+                }
+                else if($payyear==2020)
+                {
+                    $phic1='150.00';
+                    $phic2='0.03';
+                }
+                else if($payyear==2021)
+                {
+                    $phic1='150.00';
+                    $phic2='0.03';
+                }
+                else if($paymonth=='MAY' && $payyear==2022)
+                {
+                    $phic1='150.00';
+                    $phic2='0.03';
+                }
+                else if($paymonth!='MAY' && $payyear==2022)
+                {
+                    $phic1='200.00';
+                    $phic2='0.04';
+                }
+                else if($payyear==2023)
+                {
+                    $phic1='200.00';
+                    $phic2='0.04';
+                }
+                else if($payyear>2023)
+                {
+                    $phic1='200.00';
+                    $phic2='0.04';
+                }
+                if($tb<=10000)
+                { $phic=number_format(($phic1),2); }
+                else if($tb>=10000.01 && $tb<=39999.99)
+                { $phic=number_format((($tb*$phic2)/2),2); }
+                $hdmf='0.00';
+                if($basicpay2==NULL)
+                { $hdmf='150.00'; }
+            }
+            else if($payyear>=2021)
             {
                 $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);
                 $tg=str_replace(',','',$totalgrosspay);
@@ -1421,7 +1634,82 @@ if(isset($_POST['btnSave']))
                             
                             do
                             {
-                                if($payyear>=2021)
+                                if($payyear>=2023)
+                                {
+                                    if($tg<4250.00)
+                                    { $sss=180.00; }
+                                    else if($tg<=4749.99)
+                                    { $sss=202.50; }
+                                    else if($tg<=5249.99)
+                                    { $sss=225.00; }
+                                    else if($tg<=5749.99)
+                                    { $sss=247.50; }
+                                    else if($tg<=6249.99)
+                                    { $sss=270.00; }
+                                    else if($tg<=6749.99)
+                                    { $sss=292.50; }
+                                    else if($tg<=7249.99)
+                                    { $sss=315.00; }
+                                    else if($tg<=7749.99)
+                                    { $sss=337.50; }
+                                    else if($tg<=8249.99)
+                                    { $sss=360.00; }
+                                    else if($tg<=8749.99)
+                                    { $sss=382.50; }
+                                    else if($tg<=9249.99)
+                                    { $sss=405.00; }
+                                    else if($tg<= 9749.99)
+                                    { $sss=427.50; }
+                                    else if($tg<=10249.99)
+                                    { $sss=450.00; }
+                                    else if($tg<=10749.99)
+                                    { $sss=472.50; }
+                                    else if($tg<=11249.99)
+                                    { $sss=495.00; }
+                                    else if($tg<=11749.99)
+                                    { $sss=517.50; }
+                                    else if($tg<=12249.99)
+                                    { $sss=540.00; }
+                                    else if($tg<=12749.99)
+                                    { $sss=562.50; }
+                                    else if($tg<=13249.99)
+                                    { $sss=585.00; }
+                                    else if($tg<=13749.99)
+                                    { $sss=607.50; }
+                                    else if($tg<=14249.99)
+                                    { $sss=630.00; }
+                                    else if($tg<=14749.99)
+                                    { $sss=652.50; }
+                                    else if($tg<=15249.99)
+                                    { $sss=675.00; }
+                                    else if($tg<=15749.99)
+                                    { $sss=697.50; }
+                                    else if($tg<=16249.99)
+                                    { $sss=720.00; }
+                                    else if($tg<=16749.99)
+                                    { $sss=742.50; }
+                                    else if($tg<=17249.99)
+                                    { $sss=765.00; }
+                                    else if($tg<=17749.99)
+                                    { $sss=787.50; }
+                                    else if($tg<=18249.99)
+                                    { $sss=810.00; }
+                                    else if($tg<=18749.99)
+                                    { $sss=832.50; }
+                                    else if($tg<=19249.99)
+                                    { $sss=855.00; }
+                                    else if($tg<=19749.99)
+                                    { $sss=877.50; }
+                                    else if($tg<=20249.99)
+                                    { $sss=900.00; }
+                                    else if($tg<= 20749.99)
+                                    { $sss=877.50; }
+                                    else if($tg<=21249)
+                                    { $sss=900.00; }
+                                    else
+                                    { $sss=900.00; }
+                                }
+                                else if($payyear>=2021)
                                 {
                                     if($tg>=0 && $tg<=3249.99)
                                     { $sss=135.00; }
@@ -1949,7 +2237,94 @@ if(isset($_POST['btnUpdate']))
         
         if($cutoff=='1st')
         {
-            if($payyear>=2021)
+            if($payyear>=2023)
+            {
+                $grosspay2='0.00';
+                $totalgrosspay=$grosspay1;
+                $tg=str_replace(',','',$totalgrosspay);
+                do
+                {
+                    if($tg<4250.00)
+                    { $sss=180.00; }
+                    else if($tg<=4749.99)
+                    { $sss=202.50; }
+                    else if($tg<=5249.99)
+                    { $sss=225.00; }
+                    else if($tg<=5749.99)
+                    { $sss=247.50; }
+                    else if($tg<=6249.99)
+                    { $sss=270.00; }
+                    else if($tg<=6749.99)
+                    { $sss=292.50; }
+                    else if($tg<=7249.99)
+                    { $sss=315.00; }
+                    else if($tg<=7749.99)
+                    { $sss=337.50; }
+                    else if($tg<=8249.99)
+                    { $sss=360.00; }
+                    else if($tg<=8749.99)
+                    { $sss=382.50; }
+                    else if($tg<=9249.99)
+                    { $sss=405.00; }
+                    else if($tg<= 9749.99)
+                    { $sss=427.50; }
+                    else if($tg<=10249.99)
+                    { $sss=450.00; }
+                    else if($tg<=10749.99)
+                    { $sss=472.50; }
+                    else if($tg<=11249.99)
+                    { $sss=495.00; }
+                    else if($tg<=11749.99)
+                    { $sss=517.50; }
+                    else if($tg<=12249.99)
+                    { $sss=540.00; }
+                    else if($tg<=12749.99)
+                    { $sss=562.50; }
+                    else if($tg<=13249.99)
+                    { $sss=585.00; }
+                    else if($tg<=13749.99)
+                    { $sss=607.50; }
+                    else if($tg<=14249.99)
+                    { $sss=630.00; }
+                    else if($tg<=14749.99)
+                    { $sss=652.50; }
+                    else if($tg<=15249.99)
+                    { $sss=675.00; }
+                    else if($tg<=15749.99)
+                    { $sss=697.50; }
+                    else if($tg<=16249.99)
+                    { $sss=720.00; }
+                    else if($tg<=16749.99)
+                    { $sss=742.50; }
+                    else if($tg<=17249.99)
+                    { $sss=765.00; }
+                    else if($tg<=17749.99)
+                    { $sss=787.50; }
+                    else if($tg<=18249.99)
+                    { $sss=810.00; }
+                    else if($tg<=18749.99)
+                    { $sss=832.50; }
+                    else if($tg<=19249.99)
+                    { $sss=855.00; }
+                    else if($tg<=19749.99)
+                    { $sss=877.50; }
+                    else if($tg<=20249.99)
+                    { $sss=900.00; }
+                    else if($tg<= 20749.99)
+                    { $sss=877.50; }
+                    else if($tg<=21249)
+                    { $sss=900.00; }
+                    else
+                    { $sss=900.00; }
+                }
+                while($sss<180.00 || $sss>900.00);
+                $sss=number_format($sss,2);
+                $basicpay2='0.00';
+                $totalbasicpay=$basicpay1;
+                $phic='0.00';
+                $hdmf='150.00';
+            }
+            else if($payyear>=2021)
             {
                 $grosspay2='0.00';
                 $totalgrosspay=$grosspay1;
@@ -2212,7 +2587,133 @@ if(isset($_POST['btnUpdate']))
         }
         else
         {
-            if($payyear>=2021)
+            if($payyear>=2023)
+            {
+                $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);
+                $tg=str_replace(',','',$totalgrosspay);
+                do
+                {
+                    if($tg<4250.00)
+                    { $sss=180.00; }
+                    else if($tg<=4749.99)
+                    { $sss=202.50; }
+                    else if($tg<=5249.99)
+                    { $sss=225.00; }
+                    else if($tg<=5749.99)
+                    { $sss=247.50; }
+                    else if($tg<=6249.99)
+                    { $sss=270.00; }
+                    else if($tg<=6749.99)
+                    { $sss=292.50; }
+                    else if($tg<=7249.99)
+                    { $sss=315.00; }
+                    else if($tg<=7749.99)
+                    { $sss=337.50; }
+                    else if($tg<=8249.99)
+                    { $sss=360.00; }
+                    else if($tg<=8749.99)
+                    { $sss=382.50; }
+                    else if($tg<=9249.99)
+                    { $sss=405.00; }
+                    else if($tg<= 9749.99)
+                    { $sss=427.50; }
+                    else if($tg<=10249.99)
+                    { $sss=450.00; }
+                    else if($tg<=10749.99)
+                    { $sss=472.50; }
+                    else if($tg<=11249.99)
+                    { $sss=495.00; }
+                    else if($tg<=11749.99)
+                    { $sss=517.50; }
+                    else if($tg<=12249.99)
+                    { $sss=540.00; }
+                    else if($tg<=12749.99)
+                    { $sss=562.50; }
+                    else if($tg<=13249.99)
+                    { $sss=585.00; }
+                    else if($tg<=13749.99)
+                    { $sss=607.50; }
+                    else if($tg<=14249.99)
+                    { $sss=630.00; }
+                    else if($tg<=14749.99)
+                    { $sss=652.50; }
+                    else if($tg<=15249.99)
+                    { $sss=675.00; }
+                    else if($tg<=15749.99)
+                    { $sss=697.50; }
+                    else if($tg<=16249.99)
+                    { $sss=720.00; }
+                    else if($tg<=16749.99)
+                    { $sss=742.50; }
+                    else if($tg<=17249.99)
+                    { $sss=765.00; }
+                    else if($tg<=17749.99)
+                    { $sss=787.50; }
+                    else if($tg<=18249.99)
+                    { $sss=810.00; }
+                    else if($tg<=18749.99)
+                    { $sss=832.50; }
+                    else if($tg<=19249.99)
+                    { $sss=855.00; }
+                    else if($tg<=19749.99)
+                    { $sss=877.50; }
+                    else if($tg<=20249.99)
+                    { $sss=900.00; }
+                    else if($tg<= 20749.99)
+                    { $sss=877.50; }
+                    else if($tg<=21249)
+                    { $sss=900.00; }
+                    else
+                    { $sss=900.00; }
+                }
+                while($sss<180.00 || $sss>900.00);
+                $sss=number_format(($sss-$sss2),2);
+                $totalbasicpay=number_format((str_replace(',','',$basicpay1))+(str_replace(',','',$basicpay2)),2);
+                $tb=str_replace(',','',$totalbasicpay);
+                if($payyear<2020)
+                {
+                    $phic1='137.50';
+                    $phic2='0.0275';
+                }
+                else if($payyear==2020)
+                {
+                    $phic1='150.00';
+                    $phic2='0.03';
+                }
+                else if($payyear==2021)
+                {
+                    $phic1='150.00';
+                    $phic2='0.03';
+                }
+                else if($paymonth=='MAY' && $payyear==2022)
+                {
+                    $phic1='150.00';
+                    $phic2='0.03';
+                }
+                else if($paymonth!='MAY' && $payyear==2022)
+                {
+                    $phic1='200.00';
+                    $phic2='0.04';
+                }
+                else if($payyear==2023)
+                {
+                    $phic1='200.00';
+                    $phic2='0.04';
+                }
+                else if($payyear>2023)
+                {
+                    $phic1='200.00';
+                    $phic2='0.04';
+                }
+                if($tb<=10000)
+                { $phic=number_format(($phic1),2); }
+                else if($tb>=10000.01 && $tb<=39999.99)
+                { $phic=number_format((($tb*$phic2)/2),2); }
+                $hdmf='0.00';
+                if($basicpay2==NULL)
+                { $hdmf='150.00'; }
+            }
+            else if($payyear>=2021)
             {
                 $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);
                 $tg=str_replace(',','',$totalgrosspay);
