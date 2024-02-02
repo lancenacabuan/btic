@@ -1341,10 +1341,15 @@ if(!isset($_POST['btnSelect1']))
                         $phic1='200.00';
                         $phic2='0.04';
                     }
-                    else if($payyear>2023)
+                    else if($payyear==2024)
                     {
-                        $phic1='200.00';
-                        $phic2='0.04';
+                        $phic1='250.00';
+                        $phic2='0.05';
+                    }
+                    else if($payyear>2024)
+                    {
+                        $phic1='250.00';
+                        $phic2='0.05';
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }
