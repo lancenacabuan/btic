@@ -1356,7 +1356,7 @@ if(!isset($_POST['btnSelect1']))
                     else if($tb>=10000.01 && $tb<=39999.99)
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     if($rows1['basicpay1']==NULL)
-                    { $hdmf='150.00'; }
+                    { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
                     else
                     { $hdmf='0.00'; }
                     if(strpos($sssbracket,'new')!==false)

@@ -703,7 +703,7 @@ if(isset($_POST['btnSave']))
                 $basicpay2='0.00';
                 $totalbasicpay=$basicpay1;
                 $phic='0.00';
-                $hdmf='150.00';
+                $hdmf=$payyear < 2024 ? '150.00' : '200.00';
             }
             else if($payyear>=2021)
             {
@@ -790,7 +790,7 @@ if(isset($_POST['btnSave']))
                 $basicpay2='0.00';
                 $totalbasicpay=$basicpay1;
                 $phic='0.00';
-                $hdmf='150.00';
+                $hdmf=$payyear < 2024 ? '150.00' : '200.00';
             }
             else
             {
@@ -883,7 +883,7 @@ if(isset($_POST['btnSave']))
                     $basicpay2='0.00';
                     $totalbasicpay=$basicpay1;
                     $phic='0.00';
-                    $hdmf='150.00';
+                    $hdmf=$payyear < 2024 ? '150.00' : '200.00';
                 }
                 else
                 {
@@ -962,7 +962,7 @@ if(isset($_POST['btnSave']))
                     $basicpay2='0.00';
                     $totalbasicpay=$basicpay1;
                     $phic='0.00';
-                    $hdmf='150.00';
+                    $hdmf=$payyear < 2024 ? '150.00' : '200.00';
                 }
             }
         }
@@ -1097,7 +1097,7 @@ if(isset($_POST['btnSave']))
                 { $phic=number_format((($tb*$phic2)/2),2); }
                 $hdmf='0.00';
                 if($basicpay2==NULL)
-                { $hdmf='150.00'; }
+                { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
             }
             else if($payyear>=2021)
             {
@@ -1228,7 +1228,7 @@ if(isset($_POST['btnSave']))
                 { $phic=number_format((($tb*$phic2)/2),2); }
                 $hdmf='0.00';
                 if($basicpay2==NULL)
-                { $hdmf='150.00'; }
+                { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
             }
             else
             {
@@ -1365,7 +1365,7 @@ if(isset($_POST['btnSave']))
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     $hdmf='0.00';
                     if($basicpay2==NULL)
-                    { $hdmf='150.00'; }
+                    { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
                 }
                 else
                 {
@@ -1488,7 +1488,7 @@ if(isset($_POST['btnSave']))
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     $hdmf='0.00';
                     if($basicpay2==NULL)
-                    { $hdmf='150.00'; }
+                    { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
                 }
             }
         }
@@ -2347,7 +2347,7 @@ if(isset($_POST['btnUpdate']))
                 $basicpay2='0.00';
                 $totalbasicpay=$basicpay1;
                 $phic='0.00';
-                $hdmf='150.00';
+                $hdmf=$payyear < 2024 ? '150.00' : '200.00';
             }
             else if($payyear>=2021)
             {
@@ -2434,7 +2434,7 @@ if(isset($_POST['btnUpdate']))
                 $basicpay2='0.00';
                 $totalbasicpay=$basicpay1;
                 $phic='0.00';
-                $hdmf='150.00';
+                $hdmf=$payyear < 2024 ? '150.00' : '200.00';
             }
             else
             {
@@ -2527,7 +2527,7 @@ if(isset($_POST['btnUpdate']))
                     $basicpay2='0.00';
                     $totalbasicpay=$basicpay1;
                     $phic='0.00';
-                    $hdmf='150.00';
+                    $hdmf=$payyear < 2024 ? '150.00' : '200.00';
                 }
                 else
                 {
@@ -2606,7 +2606,7 @@ if(isset($_POST['btnUpdate']))
                     $basicpay2='0.00';
                     $totalbasicpay=$basicpay1;
                     $phic='0.00';
-                    $hdmf='150.00';
+                    $hdmf=$payyear < 2024 ? '150.00' : '200.00';
                 }
             }
         }
@@ -2741,7 +2741,7 @@ if(isset($_POST['btnUpdate']))
                 { $phic=number_format((($tb*$phic2)/2),2); }
                 $hdmf='0.00';
                 if($basicpay2==NULL)
-                { $hdmf='150.00'; }
+                { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
             }
             else if($payyear>=2021)
             {
@@ -2872,7 +2872,7 @@ if(isset($_POST['btnUpdate']))
                 { $phic=number_format((($tb*$phic2)/2),2); }
                 $hdmf='0.00';
                 if($basicpay2==NULL)
-                { $hdmf='150.00'; }
+                { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
             }
             else
             {
@@ -3009,7 +3009,7 @@ if(isset($_POST['btnUpdate']))
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     $hdmf='0.00';
                     if($basicpay2==NULL)
-                    { $hdmf='150.00'; }
+                    { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
                 }
                 else
                 {
@@ -3132,7 +3132,7 @@ if(isset($_POST['btnUpdate']))
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     $hdmf='0.00';
                     if($basicpay2==NULL)
-                    { $hdmf='150.00'; }
+                    { $hdmf=$payyear < 2024 ? '150.00' : '200.00'; }
                 }
             }
         }
