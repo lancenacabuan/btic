@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.23.0609.1748********************//
+<?php //********************BTIC Sales & Payroll System v15.24.0202.1730********************//
 include('functions.php');
 php_security();
 if($_SESSION['usertype']!='btic_admin' && $_SESSION['usertype']!='btic_sales')
