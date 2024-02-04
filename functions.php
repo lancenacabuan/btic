@@ -570,7 +570,7 @@ function html_start($title,$tab)
                 Better Than Ice Cream, Inc.
             </a>
             <span id="backtotop" style="background-color: #86609d;" class="badge" data-toggle="tooltip" data-placement="bottom" title="Go back to top of page.">
-                v15.23.0609.1748
+                v15.24.0202.1730
             </span>
         </header>
     </div>
