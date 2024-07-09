@@ -1093,7 +1093,7 @@ if(isset($_POST['btnSave']))
                 }
                 if($tb<=10000)
                 { $phic=number_format(($phic1),2); }
-                else if($tb>=10000.01 && $tb<=39999.99)
+                else if($tb>=10000.01)
                 { $phic=number_format((($tb*$phic2)/2),2); }
                 $hdmf='0.00';
                 if($basicpay2==NULL)
@@ -1224,7 +1224,7 @@ if(isset($_POST['btnSave']))
                 }
                 if($tb<=10000)
                 { $phic=number_format(($phic1),2); }
-                else if($tb>=10000.01 && $tb<=39999.99)
+                else if($tb>=10000.01)
                 { $phic=number_format((($tb*$phic2)/2),2); }
                 $hdmf='0.00';
                 if($basicpay2==NULL)
@@ -1361,7 +1361,7 @@ if(isset($_POST['btnSave']))
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }
-                    else if($tb>=10000.01 && $tb<=39999.99)
+                    else if($tb>=10000.01)
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     $hdmf='0.00';
                     if($basicpay2==NULL)
@@ -1484,7 +1484,7 @@ if(isset($_POST['btnSave']))
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }
-                    else if($tb>=10000.01 && $tb<=39999.99)
+                    else if($tb>=10000.01)
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     $hdmf='0.00';
                     if($basicpay2==NULL)
@@ -1647,7 +1647,7 @@ if(isset($_POST['btnSave']))
                         }
                         if($tb<=10000)
                         { $phic=number_format(($phic1),2); }
-                        else if($tb>=10000.01 && $tb<=39999.99)
+                        else if($tb>=10000.01)
                         { $phic=number_format((($tb*$phic2)/2),2); }
                         $hdmf='0.00';
                         if(strpos($sssbracket,'new')!==false)
@@ -2737,7 +2737,7 @@ if(isset($_POST['btnUpdate']))
                 }
                 if($tb<=10000)
                 { $phic=number_format(($phic1),2); }
-                else if($tb>=10000.01 && $tb<=39999.99)
+                else if($tb>=10000.01)
                 { $phic=number_format((($tb*$phic2)/2),2); }
                 $hdmf='0.00';
                 if($basicpay2==NULL)
@@ -2868,7 +2868,7 @@ if(isset($_POST['btnUpdate']))
                 }
                 if($tb<=10000)
                 { $phic=number_format(($phic1),2); }
-                else if($tb>=10000.01 && $tb<=39999.99)
+                else if($tb>=10000.01)
                 { $phic=number_format((($tb*$phic2)/2),2); }
                 $hdmf='0.00';
                 if($basicpay2==NULL)
@@ -3005,7 +3005,7 @@ if(isset($_POST['btnUpdate']))
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }
-                    else if($tb>=10000.01 && $tb<=39999.99)
+                    else if($tb>=10000.01)
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     $hdmf='0.00';
                     if($basicpay2==NULL)
@@ -3128,7 +3128,7 @@ if(isset($_POST['btnUpdate']))
                     }
                     if($tb<=10000)
                     { $phic=number_format(($phic1),2); }
-                    else if($tb>=10000.01 && $tb<=39999.99)
+                    else if($tb>=10000.01)
                     { $phic=number_format((($tb*$phic2)/2),2); }
                     $hdmf='0.00';
                     if($basicpay2==NULL)
