@@ -958,7 +958,7 @@ if(!isset($_POST['btnSelect1']))
         $filter2='WHERE'.substr($filter, 5);
         $concat='(EXCLUDING hidden record/s).';
         if($totalx>0)
-        { $where2=' AND'; }                
+        { $where2=' AND'; }
     }
     else
     {
@@ -1366,7 +1366,82 @@ if(!isset($_POST['btnSelect1']))
                         $tg=str_replace(',','',$totalgrosspay);
                         do
                         {
-                            if($payyear>=2023)
+                            if($payyear>=2025)
+                            {
+                                if($tg<4250.00)
+                                { $sss=180.00; }
+                                else if($tg<=4749.99)
+                                { $sss=202.50; }
+                                else if($tg<=5249.99)
+                                { $sss=225.00; }
+                                else if($tg<=5749.99)
+                                { $sss=247.50; }
+                                else if($tg<=6249.99)
+                                { $sss=270.00; }
+                                else if($tg<=6749.99)
+                                { $sss=292.50; }
+                                else if($tg<=7249.99)
+                                { $sss=315.00; }
+                                else if($tg<=7749.99)
+                                { $sss=337.50; }
+                                else if($tg<=8249.99)
+                                { $sss=360.00; }
+                                else if($tg<=8749.99)
+                                { $sss=382.50; }
+                                else if($tg<=9249.99)
+                                { $sss=405.00; }
+                                else if($tg<= 9749.99)
+                                { $sss=427.50; }
+                                else if($tg<=10249.99)
+                                { $sss=450.00; }
+                                else if($tg<=10749.99)
+                                { $sss=472.50; }
+                                else if($tg<=11249.99)
+                                { $sss=495.00; }
+                                else if($tg<=11749.99)
+                                { $sss=517.50; }
+                                else if($tg<=12249.99)
+                                { $sss=540.00; }
+                                else if($tg<=12749.99)
+                                { $sss=562.50; }
+                                else if($tg<=13249.99)
+                                { $sss=585.00; }
+                                else if($tg<=13749.99)
+                                { $sss=607.50; }
+                                else if($tg<=14249.99)
+                                { $sss=630.00; }
+                                else if($tg<=14749.99)
+                                { $sss=652.50; }
+                                else if($tg<=15249.99)
+                                { $sss=675.00; }
+                                else if($tg<=15749.99)
+                                { $sss=697.50; }
+                                else if($tg<=16249.99)
+                                { $sss=720.00; }
+                                else if($tg<=16749.99)
+                                { $sss=742.50; }
+                                else if($tg<=17249.99)
+                                { $sss=765.00; }
+                                else if($tg<=17749.99)
+                                { $sss=787.50; }
+                                else if($tg<=18249.99)
+                                { $sss=810.00; }
+                                else if($tg<=18749.99)
+                                { $sss=832.50; }
+                                else if($tg<=19249.99)
+                                { $sss=855.00; }
+                                else if($tg<=19749.99)
+                                { $sss=877.50; }
+                                else if($tg<=20249.99)
+                                { $sss=900.00; }
+                                else if($tg<= 20749.99)
+                                { $sss=877.50; }
+                                else if($tg<=21249)
+                                { $sss=900.00; }
+                                else
+                                { $sss=900.00; }
+                            }
+                            else if($payyear>=2023)
                             {
                                 if($tg<4250.00)
                                 { $sss=180.00; }

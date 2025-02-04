@@ -252,7 +252,7 @@ if(strpos($_POST['sssbracket'],'no')!==false)
 <br />
 <input style="height: 50px; width: 100%;" class="form-control btn btn-lg btn-success" name="btnUpdate" type="submit" value="UPDATE RECORD" onclick="return confirm('UPDATE: Do you really want to UPDATE this record?');" />
 <input style="height: 50px; width: 100%;" class="form-control btn btn-lg btn-danger" name="btnDelete" type="submit" value="DELETE RECORD" onclick="return confirm('WARNING: This action cannot be undone!\nDELETE: Do you really want to DELETE this record?');" />
-</form>    
+</form>
 <?php
 }
 else
@@ -423,11 +423,11 @@ if(isset($_POST['btnSave']))
         $enddate=validate($_POST['enddate']);
         $cutoff=validate($_POST['cutoff']);
         $creditlast=validate($_POST['creditlast']);
-        
+
         mysql_query("SELECT * FROM payroll WHERE startdate>'$startdate'");
         if(mysql_affected_rows()<=0)
         { $payslip='latest'; }
-        
+
         $employeenumber=$_POST['employeenumber'][$x];
         $employeetype=$_POST['employeetype'][$x];
         if($employeetype=='OFFICE' || $employeetype=='PRODUCTION')
@@ -439,7 +439,7 @@ if(isset($_POST['btnSave']))
         $rateperhour=number_format((str_replace(',','',$rate)/8),6);
         $oldrate=number_format(validate($_POST['oldrate'][$x]),2);
         $oldrateperhour=number_format((str_replace(',','',$oldrate)/8),6);
-        
+
         if($cutoff=='1st' && $creditlast=='yes')
         {
             $year=substr($startdate,0,4);
@@ -500,37 +500,37 @@ if(isset($_POST['btnSave']))
                 $sss2=str_replace(',','',$rows1['sss']);
             }
         }
-        
+
         $oldhrs=str_replace(',','',validate($_POST['oldhrs'][$x]));
         $week1=$paid+str_replace(',','',validate($_POST['week1'][$x]));
         $regular1=$week1-$paid;
         $overtime1=str_replace(',','',validate($_POST['overtime1'][$x]));
         $oldOT1=str_replace(',','',validate($_POST['oldOT1'][$x]));
-        
+
         $week2=str_replace(',','',validate($_POST['week2'][$x]));
         $regular2=$week2;
         $overtime2=str_replace(',','',validate($_POST['overtime2'][$x]));
-        
+
         $week3=str_replace(',','',validate($_POST['week3'][$x]));
         $regular3=$week3;
         $overtime3=str_replace(',','',validate($_POST['overtime3'][$x]));
-        
+
         $totalregular=number_format(($regular1+$regular2+$regular3),2);
         $totalregular1=number_format(($regular1+$regular2+$regular3+$oldhrs),2);
         $basicpay1=number_format((str_replace(',','',$totalregular)*str_replace(',','',$rateperhour)) + (str_replace(',','',$oldhrs)*str_replace(',','',$oldrateperhour)) ,2);
         $totalregular=$totalregular1;
-        
+
         $regularovertime=number_format(($overtime1+$overtime2+$overtime3),2);
         $regularovertime1=number_format(($overtime1+$overtime2+$overtime3+$oldOT1),2);
         $regularotpay=number_format(((str_replace(',','',$regularovertime)*str_replace(',','',$rateperhour))*1.25) + ((str_replace(',','',$oldOT1)*str_replace(',','',$oldrateperhour))*1.25),2);
         $regularovertime=$regularovertime1;
-        
+
         $specialovertime1=validate($_POST['specialovertime1'][$x]);
         $specialovertime2=validate($_POST['specialovertime2'][$x]);
         $specialovertime3=validate($_POST['specialovertime3'][$x]);
         $totalspecialot=$specialovertime1+$specialovertime2+$specialovertime3;
         $specialotpay=number_format((($totalspecialot*str_replace(',','',$rateperhour))*1.3),2);
-        
+
         $oldND1=validate($_POST['oldND1'][$x]);
         $nightdifferential1=validate($_POST['nightdifferential1'][$x]);
         $nightdifferential2=validate($_POST['nightdifferential2'][$x]);
@@ -539,12 +539,12 @@ if(isset($_POST['btnSave']))
         $totalnightdiff1=$nightdifferential1+$nightdifferential2+$nightdifferential3+$oldND1;
         $nighttimepay=number_format((($totalnightdiff*str_replace(',','',$rateperhour))*1.1) + (($oldND1*str_replace(',','',$oldrateperhour))*1.1),2);
         $totalnightdiff=$totalnightdiff1;
-        
+
         $week1=$regular1+$overtime1+$nightdifferential1+$oldhrs+$oldOT1+$oldND1;
         $week2=$regular2+$overtime2+$nightdifferential2;
         $week3=$regular3+$overtime3+$nightdifferential3;
         $overalltotal=$week1+$week2+$week3;
-        
+
         $paid=number_format($paid,2);
         $oldhrs=number_format($oldhrs,2);
         $week1=number_format($week1,2);
@@ -567,14 +567,14 @@ if(isset($_POST['btnSave']))
         $nightdifferential2=number_format($nightdifferential2,2);
         $nightdifferential3=number_format($nightdifferential3,2);
         $totalnightdiff=number_format($totalnightdiff,2);
-        
+
         if($overtime1==NULL)
         { $overtime1='0.00'; }
         if($overtime2==NULL)
         { $overtime2='0.00'; }
         if($overtime3==NULL)
         { $overtime3='0.00'; }
-        
+
         $holiday=validate($_POST['holiday']);
         $holidaypay=number_format(($holiday*str_replace(',','',$rate)),2);
         $vacation=validate($_POST['vacation'][$x]);
@@ -593,12 +593,12 @@ if(isset($_POST['btnSave']))
         }
         if($payyear=='2018' || ($payyear=='2019' && $paymonth=='JANUARY') || ($payyear=='2019' && $paymonth=='FEBRUARY') || ($payyear=='2019' && $paymonth=='MARCH') || ($payyear=='2019' && $paymonth=='APRIL'))
         { $totalvacation='N/A'; }
-        
+
         $holiday=number_format($holiday,2);
         $vacation=number_format($vacation,2);
         $adjust=validate($_POST['adjustment'][$x]);
         $adjustment=number_format($adjust,2);
-        
+
         $x1=str_replace(',','',$basicpay1);
         $x2=str_replace(',','',$regularotpay);
         $x3=str_replace(',','',$specialotpay);
@@ -609,16 +609,16 @@ if(isset($_POST['btnSave']))
         if($adjust>0)
         { $grosspay1=$grosspay1+$adjust; }
         $grosspay1=number_format($grosspay1,2);
-        
+
         $comment=ucfirst(validate($_POST['comment'][$x]));
         $sssloan=number_format((validate($_POST['sssloan'][$x])),2);
         $sssloan2=number_format((validate($_POST['sssloan2'][$x])),2);
         $hdmfloan=number_format((validate($_POST['hdmfloan'][$x])),2);
         $hdmfloan2=number_format((validate($_POST['hdmfloan2'][$x])),2);
-        
+
         if($cutoff=='1st')
         {
-            if($payyear>=2023)
+            else if($payyear>=2023)
             {
                 $grosspay2='0.00';
                 $totalgrosspay=$grosspay1;
@@ -968,7 +968,7 @@ if(isset($_POST['btnSave']))
         }
         else
         {
-            if($payyear>=2023)
+            else if($payyear>=2023)
             {
                 $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);
                 $tg=str_replace(',','',$totalgrosspay);
@@ -1492,7 +1492,7 @@ if(isset($_POST['btnSave']))
                 }
             }
         }
-                
+
         if($basicpay1=='0.00' && $grosspay1=='0.00')
         {
             $adjustment='0.00';
@@ -1504,7 +1504,7 @@ if(isset($_POST['btnSave']))
             $phic='0.00';
             $hdmf='0.00';
         }
-        
+
         if($_POST['nodeductions']=='no' || ($payyear=='2020' && $paymonth=='APRIL') || ($payyear=='2020' && $paymonth=='MAY' && $category!='Direct Labor'))
         {
             $sssloan='0.00';
@@ -1516,7 +1516,7 @@ if(isset($_POST['btnSave']))
             $hdmf='0.00';
         }
         $sssbracket=$sssbracket.' '.$_POST['nodeductions'];
-        
+
         $y1=str_replace(',','',$sssloan);
         $y2=str_replace(',','',$sssloan2);
         $y3=str_replace(',','',$hdmfloan);
@@ -1528,15 +1528,15 @@ if(isset($_POST['btnSave']))
         if($adjust<0)
         { $totaldeduction=$totaldeduction-$adjust; }
         $totaldeduction=number_format($totaldeduction,2);
-        
+
         $netpay=number_format((str_replace(',','',$grosspay1))-(str_replace(',','',$totaldeduction)),2);
-        
+
         if(str_replace(',','',$netpay)<0.00)
         {
             $unsaved=$unsaved+1;
             $negative[]='<br />'.$fullname;
         }
-        
+
         if(str_replace(',','',$netpay)>0.00)
         {
             mysql_query("SELECT * FROM ".$table." WHERE employeenumber='".$employeenumber."' AND payyear='".$payyear."' AND paymonth='".$paymonth."' AND cutoff='".$cutoff."'");
@@ -1556,7 +1556,7 @@ if(isset($_POST['btnSave']))
                 else
                 { $successful[]='<br />'.$fullname; }
                 $mysql_affected_rows=$mysql_affected_rows+$check_query;
-                
+
                 if($check_query>0)
                 {
                     if($totalvacation!='N/A' && $payslip=='latest')
@@ -1568,7 +1568,7 @@ if(isset($_POST['btnSave']))
                 $unsaved=$unsaved+1;
                 $duplicate[]='<br />'.$fullname;
             }
-            
+
             if($check_query>0)
             {
                 if($_POST['chkUpdate']=='yes')
@@ -1656,10 +1656,10 @@ if(isset($_POST['btnSave']))
                             $grosspay2=$rowsc['grosspay1'];
                             $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);
                             $tg=str_replace(',','',$totalgrosspay);
-                            
+
                             do
                             {
-                                if($payyear>=2023)
+                                else if($payyear>=2023)
                                 {
                                     if($tg<4250.00)
                                     { $sss=180.00; }
@@ -2057,18 +2057,18 @@ if(isset($_POST['btnUpdate']))
         $enddate=validate($_POST['enddate']);
         $cutoff=validate($_POST['cutoff']);
         $creditlast=validate($_POST['creditlast']);
-        
+
         mysql_query("SELECT * FROM payroll WHERE startdate>'$startdate'");
         if(mysql_affected_rows()<=0)
         { $payslip='latest'; }
-        
+
         $employeenumber=$rows['employeenumber'];
         $fullname=$rows['fullname'];
         $rate=number_format(validate($_POST['rate']),2);
         $rateperhour=number_format((str_replace(',','',$rate)/8),6);
         $oldrate=number_format(validate($_POST['oldrate']),2);
         $oldrateperhour=number_format((str_replace(',','',$oldrate)/8),6);
-        
+
         if($cutoff=='1st' && $creditlast=='yes')
         {
             $year=substr($startdate,0,4);
@@ -2129,37 +2129,37 @@ if(isset($_POST['btnUpdate']))
                 $sss2=str_replace(',','',$rows1['sss']);
             }
         }
-        
+
         $oldhrs=str_replace(',','',validate($_POST['oldhrs']));
         $week1=$paid+str_replace(',','',validate($_POST['week1']));
         $regular1=$week1-$paid;
         $overtime1=str_replace(',','',validate($_POST['overtime1']));
         $oldOT1=str_replace(',','',validate($_POST['oldOT1']));
-        
+
         $week2=str_replace(',','',validate($_POST['week2']));
         $regular2=$week2;
         $overtime2=str_replace(',','',validate($_POST['overtime2']));
-        
+
         $week3=str_replace(',','',validate($_POST['week3']));
         $regular3=$week3;
         $overtime3=str_replace(',','',validate($_POST['overtime3']));
-        
+
         $totalregular=number_format(($regular1+$regular2+$regular3),2);
         $totalregular1=number_format(($regular1+$regular2+$regular3+$oldhrs),2);
         $basicpay1=number_format((str_replace(',','',$totalregular)*str_replace(',','',$rateperhour)) + (str_replace(',','',$oldhrs)*str_replace(',','',$oldrateperhour)) ,2);
         $totalregular=$totalregular1;
-        
+
         $regularovertime=number_format(($overtime1+$overtime2+$overtime3),2);
         $regularovertime1=number_format(($overtime1+$overtime2+$overtime3+$oldOT1),2);
         $regularotpay=number_format(((str_replace(',','',$regularovertime)*str_replace(',','',$rateperhour))*1.25) + ((str_replace(',','',$oldOT1)*str_replace(',','',$oldrateperhour))*1.25),2);
         $regularovertime=$regularovertime1;
-        
+
         $specialovertime1=validate($_POST['specialovertime1']);
         $specialovertime2=validate($_POST['specialovertime2']);
         $specialovertime3=validate($_POST['specialovertime3']);
         $totalspecialot=$specialovertime1+$specialovertime2+$specialovertime3;
         $specialotpay=number_format((($totalspecialot*str_replace(',','',$rateperhour))*1.3),2);
-        
+
         $oldND1=validate($_POST['oldND1'][$x]);
         $nightdifferential1=validate($_POST['nightdifferential1']);
         $nightdifferential2=validate($_POST['nightdifferential2']);
@@ -2168,12 +2168,12 @@ if(isset($_POST['btnUpdate']))
         $totalnightdiff1=$nightdifferential1+$nightdifferential2+$nightdifferential3+$oldND1;
         $nighttimepay=number_format((($totalnightdiff*str_replace(',','',$rateperhour))*1.1) + (($oldND1*str_replace(',','',$oldrateperhour))*1.1),2);
         $totalnightdiff=$totalnightdiff1;
-        
+
         $week1=$regular1+$overtime1+$nightdifferential1+$oldhrs+$oldOT1+$oldND1;
         $week2=$regular2+$overtime2+$nightdifferential2;
         $week3=$regular3+$overtime3+$nightdifferential3;
         $overalltotal=$week1+$week2+$week3;
-        
+
         $paid=number_format($paid,2);
         $oldhrs=number_format($oldhrs,2);
         $week1=number_format($week1,2);
@@ -2196,17 +2196,17 @@ if(isset($_POST['btnUpdate']))
         $nightdifferential2=number_format($nightdifferential2,2);
         $nightdifferential3=number_format($nightdifferential3,2);
         $totalnightdiff=number_format($totalnightdiff,2);
-        
+
         if($overtime1==NULL)
         { $overtime1='0.00'; }
         if($overtime2==NULL)
         { $overtime2='0.00'; }
         if($overtime3==NULL)
         { $overtime3='0.00'; }
-        
+
         $holiday=validate($_POST['holiday']);
         $holidaypay=number_format(($holiday*str_replace(',','',$rate)),2);
-        
+
         $vacation=validate($_POST['vacation']);
         $content2=mysql_query("SELECT * FROM payroll WHERE id='".$id."'");
         $total2=mysql_affected_rows();
@@ -2237,12 +2237,12 @@ if(isset($_POST['btnUpdate']))
         }
         if($payyear=='2018' || ($payyear=='2019' && $paymonth=='JANUARY') || ($payyear=='2019' && $paymonth=='FEBRUARY') || ($payyear=='2019' && $paymonth=='MARCH') || ($payyear=='2019' && $paymonth=='APRIL'))
         { $totalvacation='N/A'; }
-        
+
         $holiday=number_format($holiday,2);
         $vacation=number_format($vacation,2);
         $adjust=validate($_POST['adjustment']);
         $adjustment=number_format($adjust,2);
-        
+
         $x1=str_replace(',','',$basicpay1);
         $x2=str_replace(',','',$regularotpay);
         $x3=str_replace(',','',$specialotpay);
@@ -2253,16 +2253,16 @@ if(isset($_POST['btnUpdate']))
         if($adjust>0)
         { $grosspay1=$grosspay1+$adjust; }
         $grosspay1=number_format($grosspay1,2);
-        
+
         $comment=ucfirst(validate($_POST['comment']));
         $sssloan=number_format(validate($_POST['sssloan']),2);
         $sssloan2=number_format(validate($_POST['sssloan2']),2);
         $hdmfloan=number_format(validate($_POST['hdmfloan']),2);
         $hdmfloan2=number_format(validate($_POST['hdmfloan2']),2);
-        
+
         if($cutoff=='1st')
         {
-            if($payyear>=2023)
+            else if($payyear>=2023)
             {
                 $grosspay2='0.00';
                 $totalgrosspay=$grosspay1;
@@ -2612,7 +2612,7 @@ if(isset($_POST['btnUpdate']))
         }
         else
         {
-            if($payyear>=2023)
+            else if($payyear>=2023)
             {
                 $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);
                 $tg=str_replace(',','',$totalgrosspay);
@@ -3136,7 +3136,7 @@ if(isset($_POST['btnUpdate']))
                 }
             }
         }
-                
+
         if($basicpay1=='0.00' && $grosspay1=='0.00')
         {
             $adjustment='0.00';
@@ -3148,7 +3148,7 @@ if(isset($_POST['btnUpdate']))
             $phic='0.00';
             $hdmf='0.00';
         }
-        
+
         if($_POST['nodeductions']=='no' || ($payyear=='2020' && $paymonth=='APRIL') || ($payyear=='2020' && $paymonth=='MAY' && $category!='Direct Labor'))
         {
             $sssloan='0.00';
@@ -3160,7 +3160,7 @@ if(isset($_POST['btnUpdate']))
             $hdmf='0.00';
         }
         $sssbracket=$sssbracket.' '.$_POST['nodeductions'];
-        
+
         $y1=str_replace(',','',$sssloan);
         $y2=str_replace(',','',$sssloan2);
         $y3=str_replace(',','',$hdmfloan);
@@ -3172,9 +3172,9 @@ if(isset($_POST['btnUpdate']))
         if($adjust<0)
         { $totaldeduction=$totaldeduction-$adjust; }
         $totaldeduction=number_format($totaldeduction,2);
-        
+
         $netpay=number_format((str_replace(',','',$grosspay1))-(str_replace(',','',$totaldeduction)),2);
-        
+
         mysql_query("SELECT * FROM ".$table." WHERE employeenumber='".$employeenumber."' AND payyear='".$payyear."' AND paymonth='".$paymonth."' AND cutoff='".$cutoff."' AND id!='".$id."'");
         if(mysql_affected_rows()<=0)
         {
@@ -3182,7 +3182,7 @@ if(isset($_POST['btnUpdate']))
             if(mysql_affected_rows()>0)
             {
                 alert('SUCCESS: Payroll record has been updated.');
-                
+
                 if($totalvacation!='N/A' && $payslip=='latest')
                 { mysql_query("UPDATE employees SET totalvacation='".$totalvacation."' WHERE employeenumber='".$employeenumber."'"); }
 
@@ -3210,7 +3210,7 @@ if(isset($_POST['btnUpdate']))
                 }
             }
             else
-            { alert('ERROR: Unable to update Payroll record.'); }   
+            { alert('ERROR: Unable to update Payroll record.'); }
         }
         else
         {
@@ -3228,7 +3228,7 @@ if(isset($_POST['btnDelete']))
     mysql_query("SELECT * FROM payroll WHERE startdate>'$startdate'");
     if(mysql_affected_rows()<=0)
     { $payslip='latest'; }
-    
+
     $vacation=str_replace(',','',validate($_POST['vacation']));
     $content5=mysql_query("SELECT * FROM payroll WHERE id='".$id."'");
     $total5=mysql_affected_rows();
@@ -3248,7 +3248,7 @@ if(isset($_POST['btnDelete']))
         }
         mysql_query("UPDATE employees SET totalvacation='".$totalvacation."' WHERE employeenumber='".$employeenumber."'");
     }
-    
+
     mysql_query("DELETE FROM ".$table." WHERE id='$id'");
     if(mysql_affected_rows()>0)
     { alert('SUCCESS: Record has been deleted.'); }
