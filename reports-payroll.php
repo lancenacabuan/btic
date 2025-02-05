@@ -1368,9 +1368,9 @@ if(!isset($_POST['btnSelect1']))
                         {
                             if($payyear>=2025)
                             {
-                                if ($tg < 4250.00)       $sss = 180.00;
-                                else if ($tg <= 4749.99) $sss = 202.50;
-                                else if ($tg <= 5249.99) $sss = 225.00;
+                                if ($tg < 5250.00)       $sss = 180.00;
+                                else if ($tg <= 5749.99) $sss = 202.50;
+                                else if ($tg <= 6249.99) $sss = 225.00;
                                 else if ($tg <= 5749.99) $sss = 247.50;
                                 else if ($tg <= 6249.99) $sss = 270.00;
                                 else if ($tg <= 6749.99) $sss = 292.50;
