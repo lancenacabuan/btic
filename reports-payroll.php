@@ -18,31 +18,33 @@ if(isset($_POST['btnVisibility']) || $_SESSION['HTTP_REFERER']=='transactions-pa
             alert('RECORD VISIBILITY: Showing all CURRENT and HIDDEN record/s.');
         }
     }
-reload_page();
+    reload_page();
 }
 $_SESSION['formtype']='payroll';
 $_SESSION['HTTP_REFERER']='reports-payroll.php';
 $title=' - Payroll Report';
 if(isset($_POST['btnSelect1']) && $_POST['payrollmode1']!=NULL && $_POST['payrollmode2']==NULL)
 {
-    if($_POST['payrollmode1']=='1') { $title=' - Basic Pay (For PhilHealth)'; }
-    if($_POST['payrollmode1']=='2') { $title=' - Gross Pay (For S.S.S.)'; }
-    if($_POST['payrollmode1']=='3') { $title=' - Total Regular Hours'; }
-    if($_POST['payrollmode1']=='4') { $title=' - Regular Overtime Hours'; }
-    if($_POST['payrollmode1']=='5') { $title=' - Special Overtime Hours'; }
-    if($_POST['payrollmode1']=='6') { $title=' - Night Differential Hours'; }
-    if($_POST['payrollmode1']=='7') { $title=' - Vacation Leave Used'; }
-    if($_POST['payrollmode1']=='8') { $title=' - Basic Pay and Adjustments'; }
-    if($_POST['payrollmode1']=='9') { $title=' - Overtime Pay'; }
-    if($_POST['payrollmode1']=='10') { $title=' - Holiday Pay'; }
-    if($_POST['payrollmode1']=='11') { $title=' - Vacation Leave Pay'; }
-    if($_POST['payrollmode1']=='12') { $title=' - S.S.S. Contributions'; }
-    if($_POST['payrollmode1']=='13') { $title=' - P.H.I.C. Contributions'; }
-    if($_POST['payrollmode1']=='14') { $title=' - H.D.M.F. Contributions'; }
-    if($_POST['payrollmode1']=='15') { $title=' - S.S.S. SL'; }
-    if($_POST['payrollmode1']=='16') { $title=' - S.S.S. CL'; }
-    if($_POST['payrollmode1']=='17') { $title=' - H.D.M.F. STL'; }
-    if($_POST['payrollmode1']=='18') { $title=' - H.D.M.F. CL'; }
+    switch ($_POST['payrollmode1']) {
+        case '1': $title=' - Basic Pay (For PhilHealth)'; break;
+        case '2': $title=' - Gross Pay (For S.S.S.)'; break;
+        case '3': $title=' - Total Regular Hours'; break;
+        case '4': $title=' - Regular Overtime Hours'; break;
+        case '5': $title=' - Special Overtime Hours'; break;
+        case '6': $title=' - Night Differential Hours'; break;
+        case '7': $title=' - Vacation Leave Used'; break;
+        case '8': $title=' - Basic Pay and Adjustments'; break;
+        case '9': $title=' - Overtime Pay'; break;
+        case '10': $title=' - Holiday Pay'; break;
+        case '11': $title=' - Vacation Leave Pay'; break;
+        case '12': $title=' - S.S.S. Contributions'; break;
+        case '13': $title=' - P.H.I.C. Contributions'; break;
+        case '14': $title=' - H.D.M.F. Contributions'; break;
+        case '15': $title=' - S.S.S. SL'; break;
+        case '16': $title=' - S.S.S. CL'; break;
+        case '17': $title=' - H.D.M.F. STL'; break;
+        case '18': $title=' - H.D.M.F. CL'; break;
+    }
     $heading='Payroll Report'.$title.' '.$_POST['year1'];
 }
 $tab=array('reports-payroll.php'=>'Payroll');
@@ -83,8 +85,6 @@ if($_SESSION['visibility']=='hidden')
 else
 { $where=" NOT status='hidden' AND "; }
 ?>
-<a href="transactions-payroll.php" class="btn btn-info" role="button" style="position: fixed; top: 105px; left: 120px; right: 0px; z-index: 1000; width: 150px; box-shadow: 5px 5px 5px grey;" data-toggle="tooltip" data-placement="bottom" title="[Transactions] - Payroll section">CREATE PAYROLL</a>
-<div class="panel panel-default">
 <div class="panel-heading" style="font-size: 20px;"><?php if($heading!=NULL){ echo $heading; } else { echo 'Payroll Report'; } ?></div>
 <div class="panel-body">
 <?php
@@ -1368,40 +1368,58 @@ if(!isset($_POST['btnSelect1']))
                         {
                             if($payyear>=2025)
                             {
-                                if ($tg < 5250.00)       $sss = 180.00;
-                                else if ($tg <= 5749.99) $sss = 202.50;
-                                else if ($tg <= 6249.99) $sss = 225.00;
-                                else if ($tg <= 5749.99) $sss = 247.50;
-                                else if ($tg <= 6249.99) $sss = 270.00;
-                                else if ($tg <= 6749.99) $sss = 292.50;
-                                else if ($tg <= 7249.99) $sss = 315.00;
-                                else if ($tg <= 7749.99) $sss = 337.50;
-                                else if ($tg <= 8249.99) $sss = 360.00;
-                                else if ($tg <= 8749.99) $sss = 382.50;
-                                else if ($tg <= 9249.99) $sss = 405.00;
-                                else if ($tg <= 9749.99) $sss = 427.50;
-                                else if ($tg <= 10249.99) $sss = 450.00;
-                                else if ($tg <= 10749.99) $sss = 472.50;
-                                else if ($tg <= 11249.99) $sss = 495.00;
-                                else if ($tg <= 11749.99) $sss = 517.50;
-                                else if ($tg <= 12249.99) $sss = 540.00;
-                                else if ($tg <= 12749.99) $sss = 562.50;
-                                else if ($tg <= 13249.99) $sss = 585.00;
-                                else if ($tg <= 13749.99) $sss = 607.50;
-                                else if ($tg <= 14249.99) $sss = 630.00;
-                                else if ($tg <= 14749.99) $sss = 652.50;
-                                else if ($tg <= 15249.99) $sss = 675.00;
-                                else if ($tg <= 15749.99) $sss = 697.50;
-                                else if ($tg <= 16249.99) $sss = 720.00;
-                                else if ($tg <= 16749.99) $sss = 742.50;
-                                else if ($tg <= 17249.99) $sss = 765.00;
-                                else if ($tg <= 17749.99) $sss = 787.50;
-                                else if ($tg <= 18249.99) $sss = 810.00;
-                                else if ($tg <= 18749.99) $sss = 832.50;
-                                else if ($tg <= 19249.99) $sss = 855.00;
-                                else if ($tg <= 19749.99) $sss = 877.50;
-                                else if ($tg <= 21249) $sss = 900.00;
-                                else $sss = 900.00;
+                                if ($tg < 5250.00)       $sss = 250.00;
+                                else if ($tg <= 5749.99) $sss = 275.00;
+                                else if ($tg <= 6249.99) $sss = 300.00;
+                                else if ($tg <= 6749.99) $sss = 325.00;
+                                else if ($tg <= 6749.99) $sss = 350.00;
+                                else if ($tg <= 6749.99) $sss = 375.00;
+                                else if ($tg <= 7249.99) $sss = 400.00;
+                                else if ($tg <= 7749.99) $sss = 425.00;
+                                else if ($tg <= 8249.99) $sss = 450.00;
+                                else if ($tg <= 8749.99) $sss = 475.00;
+                                else if ($tg <= 9249.99) $sss = 500.00;
+                                else if ($tg <= 9749.99) $sss = 525.00;
+                                else if ($tg <= 10249.99) $sss = 550.00;
+                                else if ($tg <= 10749.99) $sss = 575.00;
+                                else if ($tg <= 11249.99) $sss = 600.00;
+                                else if ($tg <= 11749.99) $sss = 625.00;
+                                else if ($tg <= 12249.99) $sss = 650.00;
+                                else if ($tg <= 12749.99) $sss = 675.00;
+                                else if ($tg <= 13249.99) $sss = 700.00;
+                                else if ($tg <= 13749.99) $sss = 725.00;
+                                else if ($tg <= 14249.99) $sss = 750.00;
+                                else if ($tg <= 14749.99) $sss = 775.00;
+                                else if ($tg <= 15249.99) $sss = 800.00;
+                                else if ($tg <= 15749.99) $sss = 825.00;
+                                else if ($tg <= 16249.99) $sss = 850.00;
+                                else if ($tg <= 16749.99) $sss = 875.00;
+                                else if ($tg <= 17249.99) $sss = 900.00;
+                                else if ($tg <= 17749.99) $sss = 925.00;
+                                else if ($tg <= 18249.99) $sss = 950.00;
+                                else if ($tg <= 18749.99) $sss = 975.00;
+                                else if ($tg <= 19249.99) $sss = 1000.00; //All here are always 1000
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else if ($tg <= 19749.99) $sss = 1000.00;
+                                else $sss = 1000.00;
                             }
                             else if($payyear>=2023)
                             {
