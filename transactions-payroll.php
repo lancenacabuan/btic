@@ -618,6 +618,61 @@ if(isset($_POST['btnSave']))
 
         if($cutoff=='1st')
         {
+            if($payyear>=2025)
+            {
+                if      ($tg <  5250.00)    $sss = 250.00;
+                else if ($tg <= 5749.99)    $sss = 275.00;
+                else if ($tg <= 6249.99)    $sss = 300.00;
+                else if ($tg <= 6749.99)    $sss = 325.00;
+                else if ($tg <= 7249.99)    $sss = 350.00;
+                else if ($tg <= 7749.99)    $sss = 375.00;
+                else if ($tg <= 8249.99)    $sss = 400.00;
+                else if ($tg <= 8749.99)    $sss = 425.00;
+                else if ($tg <= 9249.99)    $sss = 450.00;
+                else if ($tg <= 9749.99)    $sss = 475.00;
+                else if ($tg <= 10249.99)   $sss = 500.00;
+                else if ($tg <= 10749.99)   $sss = 525.00;
+                else if ($tg <= 11249.99)   $sss = 550.00;
+                else if ($tg <= 11749.99)   $sss = 575.00;
+                else if ($tg <= 12249.99)   $sss = 600.00;
+                else if ($tg <= 12749.99)   $sss = 625.00;
+                else if ($tg <= 13249.99)   $sss = 650.00;
+                else if ($tg <= 13749.99)   $sss = 675.00;
+                else if ($tg <= 14249.99)   $sss = 700.00;
+                else if ($tg <= 14749.99)   $sss = 725.00;
+                else if ($tg <= 15249.99)   $sss = 750.00;
+                else if ($tg <= 15749.99)   $sss = 775.00;
+                else if ($tg <= 16249.99)   $sss = 800.00;
+                else if ($tg <= 16749.99)   $sss = 825.00;
+                else if ($tg <= 17249.99)   $sss = 850.00;
+                else if ($tg <= 17749.99)   $sss = 875.00;
+                else if ($tg <= 18249.99)   $sss = 900.00;
+                else if ($tg <= 18749.99)   $sss = 925.00;
+                else if ($tg <= 19249.99)   $sss = 950.00;
+                else if ($tg <= 19749.99)   $sss = 975.00;
+                else if ($tg <= 20249.99)   $sss = 1000.00;
+                else if ($tg <= 20749.99)   $sss = 1000.00;
+                else if ($tg <= 21249.99)   $sss = 1000.00;
+                else if ($tg <= 21749.99)   $sss = 1000.00;
+                else if ($tg <= 21249.99)   $sss = 1000.00;
+                else if ($tg <= 22749.99)   $sss = 1000.00;
+                else if ($tg <= 22249.99)   $sss = 1000.00;
+                else if ($tg <= 23749.99)   $sss = 1000.00;
+                else if ($tg <= 23249.99)   $sss = 1000.00;
+                else if ($tg <= 24749.99)   $sss = 1000.00;
+                else if ($tg <= 24249.99)   $sss = 1000.00;
+                else if ($tg <= 25749.99)   $sss = 1000.00;
+                else if ($tg <= 25249.99)   $sss = 1000.00;
+                else if ($tg <= 26749.99)   $sss = 1000.00;
+                else if ($tg <= 26249.99)   $sss = 1000.00;
+                else if ($tg <= 27749.99)   $sss = 1000.00;
+                else if ($tg <= 27249.99)   $sss = 1000.00;
+                else if ($tg <= 28749.99)   $sss = 1000.00;
+                else if ($tg <= 28249.99)   $sss = 1000.00;
+                else if ($tg <= 29749.99)   $sss = 1000.00;
+                else if ($tg <= 29249.99)   $sss = 1000.00;
+                else $sss = 1000.00;
+            }
             else if($payyear>=2023)
             {
                 $grosspay2='0.00';
@@ -968,6 +1023,61 @@ if(isset($_POST['btnSave']))
         }
         else
         {
+            if($payyear>=2025)
+            {
+                if      ($tg <  5250.00)    $sss = 250.00;
+                else if ($tg <= 5749.99)    $sss = 275.00;
+                else if ($tg <= 6249.99)    $sss = 300.00;
+                else if ($tg <= 6749.99)    $sss = 325.00;
+                else if ($tg <= 7249.99)    $sss = 350.00;
+                else if ($tg <= 7749.99)    $sss = 375.00;
+                else if ($tg <= 8249.99)    $sss = 400.00;
+                else if ($tg <= 8749.99)    $sss = 425.00;
+                else if ($tg <= 9249.99)    $sss = 450.00;
+                else if ($tg <= 9749.99)    $sss = 475.00;
+                else if ($tg <= 10249.99)   $sss = 500.00;
+                else if ($tg <= 10749.99)   $sss = 525.00;
+                else if ($tg <= 11249.99)   $sss = 550.00;
+                else if ($tg <= 11749.99)   $sss = 575.00;
+                else if ($tg <= 12249.99)   $sss = 600.00;
+                else if ($tg <= 12749.99)   $sss = 625.00;
+                else if ($tg <= 13249.99)   $sss = 650.00;
+                else if ($tg <= 13749.99)   $sss = 675.00;
+                else if ($tg <= 14249.99)   $sss = 700.00;
+                else if ($tg <= 14749.99)   $sss = 725.00;
+                else if ($tg <= 15249.99)   $sss = 750.00;
+                else if ($tg <= 15749.99)   $sss = 775.00;
+                else if ($tg <= 16249.99)   $sss = 800.00;
+                else if ($tg <= 16749.99)   $sss = 825.00;
+                else if ($tg <= 17249.99)   $sss = 850.00;
+                else if ($tg <= 17749.99)   $sss = 875.00;
+                else if ($tg <= 18249.99)   $sss = 900.00;
+                else if ($tg <= 18749.99)   $sss = 925.00;
+                else if ($tg <= 19249.99)   $sss = 950.00;
+                else if ($tg <= 19749.99)   $sss = 975.00;
+                else if ($tg <= 20249.99)   $sss = 1000.00;
+                else if ($tg <= 20749.99)   $sss = 1000.00;
+                else if ($tg <= 21249.99)   $sss = 1000.00;
+                else if ($tg <= 21749.99)   $sss = 1000.00;
+                else if ($tg <= 21249.99)   $sss = 1000.00;
+                else if ($tg <= 22749.99)   $sss = 1000.00;
+                else if ($tg <= 22249.99)   $sss = 1000.00;
+                else if ($tg <= 23749.99)   $sss = 1000.00;
+                else if ($tg <= 23249.99)   $sss = 1000.00;
+                else if ($tg <= 24749.99)   $sss = 1000.00;
+                else if ($tg <= 24249.99)   $sss = 1000.00;
+                else if ($tg <= 25749.99)   $sss = 1000.00;
+                else if ($tg <= 25249.99)   $sss = 1000.00;
+                else if ($tg <= 26749.99)   $sss = 1000.00;
+                else if ($tg <= 26249.99)   $sss = 1000.00;
+                else if ($tg <= 27749.99)   $sss = 1000.00;
+                else if ($tg <= 27249.99)   $sss = 1000.00;
+                else if ($tg <= 28749.99)   $sss = 1000.00;
+                else if ($tg <= 28249.99)   $sss = 1000.00;
+                else if ($tg <= 29749.99)   $sss = 1000.00;
+                else if ($tg <= 29249.99)   $sss = 1000.00;
+                else $sss = 1000.00;
+            }
             else if($payyear>=2023)
             {
                 $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);
@@ -1659,6 +1769,61 @@ if(isset($_POST['btnSave']))
 
                             do
                             {
+                                if($payyear>=2025)
+                                {
+                                    if      ($tg <  5250.00)    $sss = 250.00;
+                                    else if ($tg <= 5749.99)    $sss = 275.00;
+                                    else if ($tg <= 6249.99)    $sss = 300.00;
+                                    else if ($tg <= 6749.99)    $sss = 325.00;
+                                    else if ($tg <= 7249.99)    $sss = 350.00;
+                                    else if ($tg <= 7749.99)    $sss = 375.00;
+                                    else if ($tg <= 8249.99)    $sss = 400.00;
+                                    else if ($tg <= 8749.99)    $sss = 425.00;
+                                    else if ($tg <= 9249.99)    $sss = 450.00;
+                                    else if ($tg <= 9749.99)    $sss = 475.00;
+                                    else if ($tg <= 10249.99)   $sss = 500.00;
+                                    else if ($tg <= 10749.99)   $sss = 525.00;
+                                    else if ($tg <= 11249.99)   $sss = 550.00;
+                                    else if ($tg <= 11749.99)   $sss = 575.00;
+                                    else if ($tg <= 12249.99)   $sss = 600.00;
+                                    else if ($tg <= 12749.99)   $sss = 625.00;
+                                    else if ($tg <= 13249.99)   $sss = 650.00;
+                                    else if ($tg <= 13749.99)   $sss = 675.00;
+                                    else if ($tg <= 14249.99)   $sss = 700.00;
+                                    else if ($tg <= 14749.99)   $sss = 725.00;
+                                    else if ($tg <= 15249.99)   $sss = 750.00;
+                                    else if ($tg <= 15749.99)   $sss = 775.00;
+                                    else if ($tg <= 16249.99)   $sss = 800.00;
+                                    else if ($tg <= 16749.99)   $sss = 825.00;
+                                    else if ($tg <= 17249.99)   $sss = 850.00;
+                                    else if ($tg <= 17749.99)   $sss = 875.00;
+                                    else if ($tg <= 18249.99)   $sss = 900.00;
+                                    else if ($tg <= 18749.99)   $sss = 925.00;
+                                    else if ($tg <= 19249.99)   $sss = 950.00;
+                                    else if ($tg <= 19749.99)   $sss = 975.00;
+                                    else if ($tg <= 20249.99)   $sss = 1000.00;
+                                    else if ($tg <= 20749.99)   $sss = 1000.00;
+                                    else if ($tg <= 21249.99)   $sss = 1000.00;
+                                    else if ($tg <= 21749.99)   $sss = 1000.00;
+                                    else if ($tg <= 21249.99)   $sss = 1000.00;
+                                    else if ($tg <= 22749.99)   $sss = 1000.00;
+                                    else if ($tg <= 22249.99)   $sss = 1000.00;
+                                    else if ($tg <= 23749.99)   $sss = 1000.00;
+                                    else if ($tg <= 23249.99)   $sss = 1000.00;
+                                    else if ($tg <= 24749.99)   $sss = 1000.00;
+                                    else if ($tg <= 24249.99)   $sss = 1000.00;
+                                    else if ($tg <= 25749.99)   $sss = 1000.00;
+                                    else if ($tg <= 25249.99)   $sss = 1000.00;
+                                    else if ($tg <= 26749.99)   $sss = 1000.00;
+                                    else if ($tg <= 26249.99)   $sss = 1000.00;
+                                    else if ($tg <= 27749.99)   $sss = 1000.00;
+                                    else if ($tg <= 27249.99)   $sss = 1000.00;
+                                    else if ($tg <= 28749.99)   $sss = 1000.00;
+                                    else if ($tg <= 28249.99)   $sss = 1000.00;
+                                    else if ($tg <= 29749.99)   $sss = 1000.00;
+                                    else if ($tg <= 29249.99)   $sss = 1000.00;
+                                    else $sss = 1000.00;
+                                }
                                 else if($payyear>=2023)
                                 {
                                     if($tg<4250.00)
@@ -2262,6 +2427,61 @@ if(isset($_POST['btnUpdate']))
 
         if($cutoff=='1st')
         {
+            if($payyear>=2025)
+            {
+                if      ($tg <  5250.00)    $sss = 250.00;
+                else if ($tg <= 5749.99)    $sss = 275.00;
+                else if ($tg <= 6249.99)    $sss = 300.00;
+                else if ($tg <= 6749.99)    $sss = 325.00;
+                else if ($tg <= 7249.99)    $sss = 350.00;
+                else if ($tg <= 7749.99)    $sss = 375.00;
+                else if ($tg <= 8249.99)    $sss = 400.00;
+                else if ($tg <= 8749.99)    $sss = 425.00;
+                else if ($tg <= 9249.99)    $sss = 450.00;
+                else if ($tg <= 9749.99)    $sss = 475.00;
+                else if ($tg <= 10249.99)   $sss = 500.00;
+                else if ($tg <= 10749.99)   $sss = 525.00;
+                else if ($tg <= 11249.99)   $sss = 550.00;
+                else if ($tg <= 11749.99)   $sss = 575.00;
+                else if ($tg <= 12249.99)   $sss = 600.00;
+                else if ($tg <= 12749.99)   $sss = 625.00;
+                else if ($tg <= 13249.99)   $sss = 650.00;
+                else if ($tg <= 13749.99)   $sss = 675.00;
+                else if ($tg <= 14249.99)   $sss = 700.00;
+                else if ($tg <= 14749.99)   $sss = 725.00;
+                else if ($tg <= 15249.99)   $sss = 750.00;
+                else if ($tg <= 15749.99)   $sss = 775.00;
+                else if ($tg <= 16249.99)   $sss = 800.00;
+                else if ($tg <= 16749.99)   $sss = 825.00;
+                else if ($tg <= 17249.99)   $sss = 850.00;
+                else if ($tg <= 17749.99)   $sss = 875.00;
+                else if ($tg <= 18249.99)   $sss = 900.00;
+                else if ($tg <= 18749.99)   $sss = 925.00;
+                else if ($tg <= 19249.99)   $sss = 950.00;
+                else if ($tg <= 19749.99)   $sss = 975.00;
+                else if ($tg <= 20249.99)   $sss = 1000.00;
+                else if ($tg <= 20749.99)   $sss = 1000.00;
+                else if ($tg <= 21249.99)   $sss = 1000.00;
+                else if ($tg <= 21749.99)   $sss = 1000.00;
+                else if ($tg <= 21249.99)   $sss = 1000.00;
+                else if ($tg <= 22749.99)   $sss = 1000.00;
+                else if ($tg <= 22249.99)   $sss = 1000.00;
+                else if ($tg <= 23749.99)   $sss = 1000.00;
+                else if ($tg <= 23249.99)   $sss = 1000.00;
+                else if ($tg <= 24749.99)   $sss = 1000.00;
+                else if ($tg <= 24249.99)   $sss = 1000.00;
+                else if ($tg <= 25749.99)   $sss = 1000.00;
+                else if ($tg <= 25249.99)   $sss = 1000.00;
+                else if ($tg <= 26749.99)   $sss = 1000.00;
+                else if ($tg <= 26249.99)   $sss = 1000.00;
+                else if ($tg <= 27749.99)   $sss = 1000.00;
+                else if ($tg <= 27249.99)   $sss = 1000.00;
+                else if ($tg <= 28749.99)   $sss = 1000.00;
+                else if ($tg <= 28249.99)   $sss = 1000.00;
+                else if ($tg <= 29749.99)   $sss = 1000.00;
+                else if ($tg <= 29249.99)   $sss = 1000.00;
+                else $sss = 1000.00;
+            }
             else if($payyear>=2023)
             {
                 $grosspay2='0.00';
@@ -2612,6 +2832,61 @@ if(isset($_POST['btnUpdate']))
         }
         else
         {
+            if($payyear>=2025)
+            {
+                if      ($tg <  5250.00)    $sss = 250.00;
+                else if ($tg <= 5749.99)    $sss = 275.00;
+                else if ($tg <= 6249.99)    $sss = 300.00;
+                else if ($tg <= 6749.99)    $sss = 325.00;
+                else if ($tg <= 7249.99)    $sss = 350.00;
+                else if ($tg <= 7749.99)    $sss = 375.00;
+                else if ($tg <= 8249.99)    $sss = 400.00;
+                else if ($tg <= 8749.99)    $sss = 425.00;
+                else if ($tg <= 9249.99)    $sss = 450.00;
+                else if ($tg <= 9749.99)    $sss = 475.00;
+                else if ($tg <= 10249.99)   $sss = 500.00;
+                else if ($tg <= 10749.99)   $sss = 525.00;
+                else if ($tg <= 11249.99)   $sss = 550.00;
+                else if ($tg <= 11749.99)   $sss = 575.00;
+                else if ($tg <= 12249.99)   $sss = 600.00;
+                else if ($tg <= 12749.99)   $sss = 625.00;
+                else if ($tg <= 13249.99)   $sss = 650.00;
+                else if ($tg <= 13749.99)   $sss = 675.00;
+                else if ($tg <= 14249.99)   $sss = 700.00;
+                else if ($tg <= 14749.99)   $sss = 725.00;
+                else if ($tg <= 15249.99)   $sss = 750.00;
+                else if ($tg <= 15749.99)   $sss = 775.00;
+                else if ($tg <= 16249.99)   $sss = 800.00;
+                else if ($tg <= 16749.99)   $sss = 825.00;
+                else if ($tg <= 17249.99)   $sss = 850.00;
+                else if ($tg <= 17749.99)   $sss = 875.00;
+                else if ($tg <= 18249.99)   $sss = 900.00;
+                else if ($tg <= 18749.99)   $sss = 925.00;
+                else if ($tg <= 19249.99)   $sss = 950.00;
+                else if ($tg <= 19749.99)   $sss = 975.00;
+                else if ($tg <= 20249.99)   $sss = 1000.00;
+                else if ($tg <= 20749.99)   $sss = 1000.00;
+                else if ($tg <= 21249.99)   $sss = 1000.00;
+                else if ($tg <= 21749.99)   $sss = 1000.00;
+                else if ($tg <= 21249.99)   $sss = 1000.00;
+                else if ($tg <= 22749.99)   $sss = 1000.00;
+                else if ($tg <= 22249.99)   $sss = 1000.00;
+                else if ($tg <= 23749.99)   $sss = 1000.00;
+                else if ($tg <= 23249.99)   $sss = 1000.00;
+                else if ($tg <= 24749.99)   $sss = 1000.00;
+                else if ($tg <= 24249.99)   $sss = 1000.00;
+                else if ($tg <= 25749.99)   $sss = 1000.00;
+                else if ($tg <= 25249.99)   $sss = 1000.00;
+                else if ($tg <= 26749.99)   $sss = 1000.00;
+                else if ($tg <= 26249.99)   $sss = 1000.00;
+                else if ($tg <= 27749.99)   $sss = 1000.00;
+                else if ($tg <= 27249.99)   $sss = 1000.00;
+                else if ($tg <= 28749.99)   $sss = 1000.00;
+                else if ($tg <= 28249.99)   $sss = 1000.00;
+                else if ($tg <= 29749.99)   $sss = 1000.00;
+                else if ($tg <= 29249.99)   $sss = 1000.00;
+                else $sss = 1000.00;
+            }
             else if($payyear>=2023)
             {
                 $totalgrosspay=number_format((str_replace(',','',$grosspay1))+(str_replace(',','',$grosspay2)),2);

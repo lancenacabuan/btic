@@ -1371,7 +1371,7 @@ if(!isset($_POST['btnSelect1']))
                                 if      ($tg <  5250.00)    $sss = 250.00;
                                 else if ($tg <= 5749.99)    $sss = 275.00;
                                 else if ($tg <= 6249.99)    $sss = 300.00;
-                                else if ($tg <= 7249.99)    $sss = 325.00;
+                                else if ($tg <= 6749.99)    $sss = 325.00;
                                 else if ($tg <= 7249.99)    $sss = 350.00;
                                 else if ($tg <= 7749.99)    $sss = 375.00;
                                 else if ($tg <= 8249.99)    $sss = 400.00;
