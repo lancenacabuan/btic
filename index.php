@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.24.0709.1718********************//
+<?php //********************BTIC Sales & Payroll System v15.24.0506.0855********************//
 include('functions.php');
 $_SESSION['formtype']=NULL;
 $_SESSION['HTTP_REFERER']='index.php';

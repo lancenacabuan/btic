@@ -1,4 +1,4 @@
-<?php //********************BTIC Sales & Payroll System v15.24.0709.1718********************//
+<?php //********************BTIC Sales & Payroll System v15.24.0506.0855********************//
 error_reporting(0);
 session_start();
 mysql_connect("localhost","root");
@@ -570,7 +570,7 @@ function html_start($title,$tab)
                 Better Than Ice Cream, Inc.
             </a>
             <span id="backtotop" style="background-color: #86609d;" class="badge" data-toggle="tooltip" data-placement="bottom" title="Go back to top of page.">
-                v15.24.0709.1718
+                v15.24.0506.0855
             </span>
         </header>
     </div>
