@@ -1551,4 +1551,73 @@ function php_security()
         redirect_page();
     }
 }
+
+function sss($payyear, $tg){
+    if($payyear >= 2025){        
+        if ($tg < 5250.00) {
+            $sss = 250.00;
+        } else if ($tg < 5750.00) {
+            $sss = 275.00;
+        } else if ($tg < 6250.00) {
+            $sss = 300.00;
+        } else if ($tg < 6750.00) {
+            $sss = 325.00;
+        } else if ($tg < 7250.00) {
+            $sss = 350.00;
+        } else if ($tg < 7750.00) {
+            $sss = 375.00;
+        } else if ($tg < 8250.00) {
+            $sss = 400.00;
+        } else if ($tg < 8750.00) {
+            $sss = 425.00;
+        } else if ($tg < 9250.00) {
+            $sss = 450.00;
+        } else if ($tg < 9750.00) {
+            $sss = 475.00;
+        } else if ($tg < 10250.00) {
+            $sss = 500.00;
+        } else if ($tg < 10750.00) {
+            $sss = 525.00;
+        } else if ($tg < 11250.00) {
+            $sss = 550.00;
+        } else if ($tg < 11750.00) {
+            $sss = 575.00;
+        } else if ($tg < 12250.00) {
+            $sss = 600.00;
+        } else if ($tg < 12750.00) {
+            $sss = 625.00;
+        } else if ($tg < 13250.00) {
+            $sss = 650.00;
+        } else if ($tg < 13750.00) {
+            $sss = 675.00;
+        } else if ($tg < 14250.00) {
+            $sss = 700.00;
+        } else if ($tg < 14750.00) {
+            $sss = 725.00;
+        } else if ($tg < 15250.00) {
+            $sss = 750.00;
+        } else if ($tg < 15750.00) {
+            $sss = 775.00;
+        } else if ($tg < 16250.00) {
+            $sss = 800.00;
+        } else if ($tg < 16750.00) {
+            $sss = 825.00;
+        } else if ($tg < 17250.00) {
+            $sss = 850.00;
+        } else if ($tg < 17750.00) {
+            $sss = 875.00;
+        } else if ($tg < 18250.00) {
+            $sss = 900.00;
+        } else if ($tg < 18750.00) {
+            $sss = 925.00;
+        } else if ($tg < 19250.00) {
+            $sss = 950.00;
+        } else if ($tg < 19750.00) {
+            $sss = 975.00;
+        } else {
+            $sss = 1000.00;
+        }
+    }
+    return $sss;
+}
 ?>
